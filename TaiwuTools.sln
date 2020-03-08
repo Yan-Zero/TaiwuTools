@@ -1,0 +1,41 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+
+# This file is part of the TaiwuTools <https://github.com/vizv/TaiwuTools/>.
+# Copyright (C) 2020  Taiwu Modding Community Members
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaiwuInspector", "TaiwuInspector\TaiwuInspector.csproj", "{D82A0AA3-436A-4146-A86F-812CD45B8683}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D82A0AA3-436A-4146-A86F-812CD45B8683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82A0AA3-436A-4146-A86F-812CD45B8683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82A0AA3-436A-4146-A86F-812CD45B8683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82A0AA3-436A-4146-A86F-812CD45B8683}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA732485-B263-4C44-8027-609848C87496}
+	EndGlobalSection
+EndGlobal

@@ -14,13 +14,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-using System.Reflection;
+using UnityUIKit.Components;
+using UnityUIKit.Core.GameObjects;
+using UnityEngine;
+using UnityEngine.UI;
 
-[assembly: AssemblyTitle("TaiwuInspector")]
-[assembly: AssemblyDescription("太吾绘卷检视器")]
-[assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyCompany("Taiwu Modding Community")]
-[assembly: AssemblyProduct("TaiwuInspector")]
-[assembly: AssemblyCopyright("Copyright © Taiwu Modding Community Members 2020")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+namespace UnityUIKit.GameObjects
+{
+    public class Block : BoxElementGameObject
+    {
+        // FIXME: Add SerializableField Tag
+        public Color? BackgroundColor = null;
+        public Image Background => Get<Image>();
+
+        public override void Create(bool active = true)
+        {
+            base.Create(active);
+
+            if (BackgroundColor.HasValue)
+            {
+                Background.color = BackgroundColor.Value;
+            }
+
+            BoxElement.Apply(Element);
+        }
+    }
+}

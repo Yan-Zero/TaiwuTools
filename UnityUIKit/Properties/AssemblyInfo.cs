@@ -16,11 +16,11 @@
 
 using System.Reflection;
 
-[assembly: AssemblyTitle("TaiwuInspector")]
-[assembly: AssemblyDescription("太吾绘卷检视器")]
+[assembly: AssemblyTitle("UnityUIKit")]
+[assembly: AssemblyDescription("Unity UI 工具箱")]
 [assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("Taiwu Modding Community")]
-[assembly: AssemblyProduct("TaiwuInspector")]
+[assembly: AssemblyProduct("UnityUIKit")]
 [assembly: AssemblyCopyright("Copyright © Taiwu Modding Community Members 2020")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

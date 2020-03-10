@@ -14,13 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-using System.Reflection;
+using UnityUIKit.Components;
 
-[assembly: AssemblyTitle("TaiwuInspector")]
-[assembly: AssemblyDescription("太吾绘卷检视器")]
-[assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyCompany("Taiwu Modding Community")]
-[assembly: AssemblyProduct("TaiwuInspector")]
-[assembly: AssemblyCopyright("Copyright © Taiwu Modding Community Members 2020")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+namespace UnityUIKit.Core.GameObjects
+{
+    public class BoxElementGameObject : ManagedGameObject
+    {
+        // FIXME: Add SerializableField Tag
+        public BoxElement.ComponentAttributes Element = new BoxElement.ComponentAttributes();
+        public BoxElement BoxElement => Get<BoxElement>();
+
+        public override void Create(bool active = true)
+        {
+            base.Create(active);
+
+            BoxElement.Apply(Element);
+        }
+    }
+}

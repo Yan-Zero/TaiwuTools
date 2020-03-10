@@ -1,0 +1,8 @@
+﻿{
+    "Id": "TaiwuUIKit",
+    "DisplayName": "太吾绘卷 UI 工具箱",
+    "Author": "Taiwu Modding Community",
+    "Version": "1.0.0",
+    "AssemblyName": "TaiwuUIKit.dll",
+    "EntryMethod": "TaiwuUIKit.UMMShim.Load"
+}

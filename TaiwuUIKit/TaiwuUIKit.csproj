@@ -29,6 +29,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <StartProgram>C:\Windows\System32\cmd.exe</StartProgram>
+    <StartArguments>/C START steam://rungameid/838350</StartArguments>
+    <ModPath>C:\Program Files (x86)\Steam\steamapps\common\The Scroll Of Taiwu\Mods\TaiwuUIKit</ModPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,6 +81,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="GameObjects\BaseScroll.cs" />
     <Compile Include="GameObjects\BaseText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UMMShim.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UnityUIKit\UnityUIKit.csproj">
@@ -85,5 +89,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <Name>UnityUIKit</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      COPY /Y "$(TargetDir)UnityUIKit.dll" "$(ModPath)"
+      COPY /Y "$(TargetDir)Info.json" "$(ModPath)"
+      COPY /Y "$(TargetDir)$(TargetFileName)" "$(ModPath)"
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 This file is part of the TaiwuTools <https://github.com/vizv/TaiwuTools/>.
 Copyright (C) 2020  Taiwu Modding Community Members
@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>d82a0aa3-436a-4146-a86f-812cd45b8683</ProjectGuid>
+    <ProjectGuid>{D82A0AA3-436A-4146-A86F-812CD45B8683}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TaiwuInspector</RootNamespace>
@@ -29,6 +29,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Windows\System32\cmd.exe</StartProgram>
+    <StartArguments>/C START steam://rungameid/838350</StartArguments>
+    <ModPath>C:\Program Files (x86)\Steam\steamapps\common\The Scroll Of Taiwu\Mods\TaiwuInspector</ModPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,18 +52,42 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    <Reference Include="Microsoft.CSharp"/>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Net.Http"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\Dependencies\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UMMShim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaiwuUIKit\TaiwuUIKit.csproj">
+      <Project>{aa53ae33-cc71-4551-b4a3-fcc5b9b51aa3}</Project>
+      <Name>TaiwuUIKit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnityUIKit\UnityUIKit.csproj">
+      <Project>{844035dd-585c-43c5-82f3-eafc6416d1c0}</Project>
+      <Name>UnityUIKit</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+  <PropertyGroup>
+    <PostBuildEvent>
+      COPY /Y "$(TargetDir)Info.json" "$(ModPath)"
+      COPY /Y "$(TargetDir)$(TargetFileName)" "$(ModPath)"
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -16,7 +16,7 @@
 
 using static UnityModManagerNet.UnityModManager;
 
-namespace TaiwuInspector
+namespace TaiwuUIKit
 {
     public class UMMShim
     {
@@ -26,8 +26,6 @@ namespace TaiwuInspector
         public static bool Load(ModEntry mod)
         {
             Mod = mod;
-            TaiwuUIKit.UMMShim.Logger.Log("已加载");
-            Logger.Log("已加载");
 
             return true;
         }

@@ -27,6 +27,7 @@ namespace TaiwuUIKit
         {
             Mod = mod;
 
+            if (typeof(UnityUIKit.Core.ManagedGameObject) == null) return false;
             return true;
         }
     }

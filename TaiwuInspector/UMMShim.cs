@@ -26,8 +26,9 @@ namespace TaiwuInspector
         public static bool Load(ModEntry mod)
         {
             Mod = mod;
-            TaiwuUIKit.UMMShim.Logger.Log("已加载");
-            Logger.Log("已加载");
+
+            if (typeof(UnityAssetsReader.GlobalGameManagersAssetsFile) == null) return false;
+            Controller.Load();
 
             return true;
         }

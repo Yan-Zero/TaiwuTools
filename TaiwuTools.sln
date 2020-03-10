@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaiwuInspector", "TaiwuInsp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityUIKit", "UnityUIKit\UnityUIKit.csproj", "{844035DD-585C-43C5-82F3-EAFC6416D1C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaiwuUIKit", "TaiwuUIKit\TaiwuUIKit.csproj", "{AA53AE33-CC71-4551-B4A3-FCC5B9B51AA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{844035DD-585C-43C5-82F3-EAFC6416D1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{844035DD-585C-43C5-82F3-EAFC6416D1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{844035DD-585C-43C5-82F3-EAFC6416D1C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA53AE33-CC71-4551-B4A3-FCC5B9B51AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA53AE33-CC71-4551-B4A3-FCC5B9B51AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA53AE33-CC71-4551-B4A3-FCC5B9B51AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA53AE33-CC71-4551-B4A3-FCC5B9B51AA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

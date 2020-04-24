@@ -47,10 +47,7 @@ namespace UnityUIKit.GameObjects
 
         public void Apply()
         {
-            if (Created)
-                TextControl.Apply(_Text);
-            //else
-            //    throw new System.Exception("Haven't created.");
+            TextControl.Apply(_Text);
         }
     }
 }

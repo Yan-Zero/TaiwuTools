@@ -58,6 +58,10 @@ namespace UnityUIKit.Core
         public T Get<T>() where T : Component => GameObject.GetComponent<T>() ?? GameObject.AddComponent<T>();
         public Component Get(Type type) => GameObject.GetComponent(type) ?? GameObject.AddComponent(type);
 
+        public bool Contains<T>() where T : Component => GameObject.GetComponent<T>() != null;
+        public bool Contains(Type type) => GameObject.GetComponent(type) != null;
+
+
         public bool Created => !Destroyed;
         public bool Destroyed => !gameObject;
         public bool IsActive => GameObject.activeSelf;

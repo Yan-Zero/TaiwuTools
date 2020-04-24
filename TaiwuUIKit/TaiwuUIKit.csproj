@@ -81,10 +81,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameObjects\Button.cs" />
-    <Compile Include="GameObjects\Frame.cs" />
+    <Compile Include="GameObjects\CloseButton.cs" />
+    <Compile Include="GameObjects\TaiwuTitle.cs" />
+    <Compile Include="GameObjects\TaiwuToggle.cs" />
+    <Compile Include="GameObjects\TaiwuTogleButton.cs" />
+    <Compile Include="GameObjects\BaseFrame.cs" />
     <Compile Include="GameObjects\BaseScroll.cs" />
     <Compile Include="GameObjects\BaseText.cs" />
+    <Compile Include="GameObjects\TaiwuButton.cs" />
     <Compile Include="GameObjects\TaiwuWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UMMShim.cs" />

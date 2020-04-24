@@ -76,6 +76,7 @@ namespace UnityUIKit.Components
 
             // FIXME: Add SerializableField Tag
             public List<int> Padding = new List<int>();
+
             public RectOffset RectOffset
             {
                 get

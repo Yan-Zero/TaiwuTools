@@ -22,14 +22,35 @@ namespace UnityUIKit.GameObjects
     public class Label : ManagedGameObject
     {
         // FIXME: Add SerializableField Tag
-        public TextControl.ComponentAttributes Text = new TextControl.ComponentAttributes();
+        public TextControl.ComponentAttributes _Text = new TextControl.ComponentAttributes();
         public TextControl TextControl => Get<TextControl>();
+
+        public string Text
+        {
+            get
+            {
+                return _Text.Content;
+            }
+            set
+            {
+                _Text.Content = value;
+                Apply();
+            }
+        }
 
         public override void Create(bool active = true)
         {
             base.Create(active);
 
-            TextControl.Apply(Text);
+            TextControl.Apply(_Text);
+        }
+
+        public void Apply()
+        {
+            if (Created)
+                TextControl.Apply(_Text);
+            //else
+            //    throw new System.Exception("Haven't created.");
         }
     }
 }

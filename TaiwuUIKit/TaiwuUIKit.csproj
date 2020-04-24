@@ -31,7 +31,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Deterministic>true</Deterministic>
     <StartProgram>C:\Windows\System32\cmd.exe</StartProgram>
     <StartArguments>/C START steam://rungameid/838350</StartArguments>
-    <ModPath>C:\Program Files (x86)\Steam\steamapps\common\The Scroll Of Taiwu\Mods\TaiwuUIKit</ModPath>
+    <ModPath>E:\steamapps\common\The Scroll Of Taiwu\Mods\TaiwuUIKit</ModPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +53,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Dependencies\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,22 +65,27 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\Dependencies\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Dependencies\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\Dependencies\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\Dependencies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameObjects\BaseButton.cs" />
-    <Compile Include="GameObjects\BaseFrame.cs" />
+    <Compile Include="GameObjects\Button.cs" />
+    <Compile Include="GameObjects\Frame.cs" />
     <Compile Include="GameObjects\BaseScroll.cs" />
     <Compile Include="GameObjects\BaseText.cs" />
+    <Compile Include="GameObjects\TaiwuWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UMMShim.cs" />
   </ItemGroup>
@@ -87,6 +93,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <ProjectReference Include="..\UnityUIKit\UnityUIKit.csproj">
       <Project>{844035dd-585c-43c5-82f3-eafc6416d1c0}</Project>
       <Name>UnityUIKit</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +104,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-      COPY /Y "$(TargetDir)UnityUIKit.dll" "$(ModPath)"
-      COPY /Y "$(TargetDir)Info.json" "$(ModPath)"
-      COPY /Y "$(TargetDir)$(TargetFileName)" "$(ModPath)"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>

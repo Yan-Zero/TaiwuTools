@@ -32,7 +32,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <StartAction>Program</StartAction>
     <StartProgram>C:\Windows\System32\cmd.exe</StartProgram>
     <StartArguments>/C START steam://rungameid/838350</StartArguments>
-    <ModPath>C:\Program Files (x86)\Steam\steamapps\common\The Scroll Of Taiwu\Mods\TaiwuInspector</ModPath>
+    <ModPath>E:\steamapps\common\The Scroll Of Taiwu\Mods\TaiwuInspector</ModPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -111,9 +111,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-      COPY /Y "$(TargetDir)UnityAssetsReader.dll" "$(ModPath)"
-      COPY /Y "$(TargetDir)Info.json" "$(ModPath)"
-      COPY /Y "$(TargetDir)$(TargetFileName)" "$(ModPath)"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>

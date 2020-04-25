@@ -25,11 +25,13 @@ using System;
 
 namespace TaiwuUIKit.GameObjects
 {
+    [YamlOnlySerializeSerializable]
     public class TaiwuTogleButton : BaseTogleButton
     {
         public virtual PointerEnter Res_PointerEnter => null;
         public virtual PointerClick Res_PointerClick => null;
 
+        [YamlSerializable]
         public bool UseBoldFont = false;
 
         public override void Create(bool active = true)

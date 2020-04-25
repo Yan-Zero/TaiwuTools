@@ -23,6 +23,7 @@ using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core
 {
+    [Serializable]
     [YamlOnlySerializeSerializable]
     public abstract class ManagedGameObject : IManagedObject
     {

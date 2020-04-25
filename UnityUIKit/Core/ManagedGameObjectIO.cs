@@ -11,6 +11,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.ObjectFactories;
+using YamlDotNet.Serialization.ObjectGraphTraversalStrategies;
 using YamlDotNet.Serialization.TypeInspectors;
 using YamlDotNet.Serialization.TypeResolvers;
 
@@ -29,7 +30,7 @@ namespace UnityUIKit.Core
 	public static class ManagedGameObjectIO
 	{
 #if DEBUG
-		static DebugLogger writer = File.CreateText(Path.Combine(System.IO.Directory.GetCurrentDirectory(), "test.yml")) as DebugLogger;
+		public static DebugLogger debugLogger = new DebugLogger(Path.Combine(System.IO.Directory.GetCurrentDirectory(), $"UnityUIKit.Debug.yml"), append: false);
 #endif
 
 		private static ISerializer m_Serializer;
@@ -42,8 +43,6 @@ namespace UnityUIKit.Core
 			var typeInspectorFactories_ = serializer_.GetType().GetField("typeInspectorFactories", BindingFlags.NonPublic | BindingFlags.Instance);
 			var typeInspectorFactories = typeInspectorFactories_.GetValue(serializer_);
 
-			//var _namingConvention = serializer_.GetType().GetField("namingConvention", BindingFlags.NonPublic | BindingFlags.Instance);
-			//var namingConvention = _namingConvention.GetValue(serializer_) as INamingConvention;
 
 			var Add = typeInspectorFactories.GetType().GetMethod("Add", BindingFlags.Public | BindingFlags.Instance);
 			Add.Invoke(typeInspectorFactories, new object[] {
@@ -56,8 +55,12 @@ namespace UnityUIKit.Core
 				typeof(YamlDotNet.Serialization.YamlAttributesTypeInspector)
 			});
 
-			//var objectGraphTraversalStrategyFactory = (ObjectGraphTraversalStrategyFactory)((ITypeInspector typeInspector, ITypeResolver typeResolver, IEnumerable<IYamlTypeConverter> typeConverters, int maximumRecursion) => new ManagedGameObject_TraversalStrategy(typeInspector, typeResolver, maximumRecursion, namingConvention));
-			//serializer_.WithObjectGraphTraversalStrategyFactory(objectGraphTraversalStrategyFactory);
+#if DEBUG
+			var _namingConvention = serializer_.GetType().GetField("namingConvention", BindingFlags.NonPublic | BindingFlags.Instance);
+			var namingConvention = _namingConvention.GetValue(serializer_) as INamingConvention;
+			var objectGraphTraversalStrategyFactory = (ObjectGraphTraversalStrategyFactory)((ITypeInspector typeInspector, ITypeResolver typeResolver, IEnumerable<IYamlTypeConverter> typeConverters, int maximumRecursion) => new Debug_TraversalStrategy(typeInspector, typeResolver, maximumRecursion, namingConvention));
+			serializer_.WithObjectGraphTraversalStrategyFactory(objectGraphTraversalStrategyFactory);
+#endif
 
 			m_Serializer = serializer_.Build();
 
@@ -79,8 +82,6 @@ namespace UnityUIKit.Core
 
 			public override IEnumerable<IPropertyDescriptor> GetProperties(Type type, object container)
 			{
-				//if (type.IsAssignableFrom(type))
-				//	;
 				var i_result = new List<IPropertyDescriptor>();
 
 				if (type.GetCustomAttribute<YamlOnlySerializeSerializableAttribute>() != null)
@@ -131,7 +132,6 @@ namespace UnityUIKit.Core
 				return i_result;
 			}
 
-
 		}
 
 
@@ -174,12 +174,12 @@ namespace UnityUIKit.Core
 					string i = nestedObjectDeserializer(parser, typeof(string)) as string;
 					expectedType = TypeByName(i);
 #if DEBUG
-					writer.Start("Deserialize");
+					debugLogger.Start("Deserialize");
 
-					writer.WriteLine($"nestedObjectDeserializer : { i }");
-					writer.WriteLine($"expectedType : { expectedType }");
+					debugLogger.WriteLine($"nestedObjectDeserializer : { i }");
+					debugLogger.WriteLine($"expectedType : { expectedType }");
 
-					writer.End();
+					debugLogger.End();
 #endif
 					if (expectedType == null)
 					{
@@ -226,12 +226,56 @@ namespace UnityUIKit.Core
 		}
 
 
-        #region DebugLogger
+        #region Debug_TraversalStrategy
+#if DEBUG
+		public class Debug_TraversalStrategy : FullObjectGraphTraversalStrategy
+		{
+			public Debug_TraversalStrategy(ITypeInspector typeDescriptor, ITypeResolver typeResolver, int maxRecursion, INamingConvention namingConvention)
+				: base(typeDescriptor, typeResolver, maxRecursion, namingConvention)
+			{
+			}
+
+			protected override void Traverse<TContext>(object name, IObjectDescriptor value, IObjectGraphVisitor<TContext> visitor, TContext context, Stack<ObjectPathSegment> path)
+			{
+				debugLogger.Start("Traverse_" + name);
+
+				debugLogger.ShowStart("value");
+				debugLogger.WriteLine($"value.ScalarStyle : {value?.ScalarStyle}");
+				debugLogger.WriteLine($"value.StaticType : {value?.StaticType}");
+				debugLogger.WriteLine($"value.Type : {value?.Type}");
+				debugLogger.WriteLine($"value.Value : {value?.Value}");
+				debugLogger.End();
+
+				debugLogger.ShowStart("context");
+				debugLogger.WriteLine($"context : {context}");
+				debugLogger.End();
+
+				debugLogger.ShowStart("path");
+				var i_path = path?.ToList();
+				if (i_path != null)
+					for(int i = 0;i< i_path.Count;i++)
+					{
+						debugLogger.ShowStart($"path[{i}]");
+						debugLogger.WriteLine($"path[{i}].name : {i_path[i].name}");
+						debugLogger.WriteLine($"path[{i}].value : {i_path[i].value}");
+						debugLogger.End();
+					}
+				debugLogger.End();
+
+
+				debugLogger.End();
+				base.Traverse<TContext>(name, value, visitor, context, path);
+			}
+		}
+#endif
+		#endregion
+
+		#region DebugLogger
 #if DEBUG
 
-        public class DebugLogger : StreamWriter
+		public class DebugLogger : StreamWriter
 		{
-			private Stack<string> NameStack = new Stack<string>();
+			private Stack<KeyValuePair<string,bool>> NameStack = new Stack<KeyValuePair<string, bool>>();
 
 			public DebugLogger(string path) : this(path, false)
 			{
@@ -255,21 +299,35 @@ namespace UnityUIKit.Core
 				for (int i = 0; i < NameStack.Count; i++)
 					text = " " + text;
 				base.WriteLine(text);
+				debugLogger.Flush();
 			}
 
 			public void Start(string name)
 			{
+				base.WriteLine();
 				for (int i = 0; i < NameStack.Count; i++)
 					name = " " + name;
 				base.WriteLine(name + "_Start");
-				NameStack.Push(name);
+				NameStack.Push(new KeyValuePair<string, bool>(name, true));
+				debugLogger.Flush();
 			}
 
 			public void End()
 			{
-				var name = NameStack.Pop();
-				base.WriteLine(name + "_End");
-				writer.Flush();
+				var tempKV = NameStack.Pop();
+				if (tempKV.Value)
+					base.WriteLine(tempKV.Key + "_End");
+				debugLogger.Flush();
+			}
+
+			public void ShowStart(string name)
+			{
+				base.WriteLine();
+				for (int i = 0; i < NameStack.Count; i++)
+					name = " " + name;
+				base.WriteLine(name + ":");
+				NameStack.Push(new KeyValuePair<string, bool>(name, false));
+				debugLogger.Flush();
 			}
 		}
 
@@ -280,10 +338,10 @@ namespace UnityUIKit.Core
         public static T Load<T>(string input)
         {
 #if DEBUG
-			writer.Start("Load");
+			debugLogger.Start("Load");
 			var i = default(T);
 			i = m_Deserializer.Deserialize<T>(input);
-			writer.End();
+			debugLogger.End();
 			return i;
 #endif
 			return m_Deserializer.Deserialize<T>(input);
@@ -292,9 +350,9 @@ namespace UnityUIKit.Core
         public static string Save(ManagedGameObject input)
         {
 #if DEBUG
-			writer.Start("Save");
+			debugLogger.Start("Save");
 			string i = m_Serializer.Serialize(input);
-			writer.End();
+			debugLogger.End();
 			return i;
 #endif
 			return m_Serializer.Serialize(input);

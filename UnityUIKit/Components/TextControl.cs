@@ -17,6 +17,7 @@
 using UnityUIKit.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace UnityUIKit.Components
 {
@@ -37,21 +38,14 @@ namespace UnityUIKit.Components
             Text.horizontalOverflow = HorizontalWrapMode.Overflow;
         }
 
+
+        [Serializable]
         public new class ComponentAttributes : ManagedComponent.ComponentAttributes
         {
-            // FIXME: Add SerializableField Tag
             public Font Font = null;
-
-            // FIXME: Add SerializableField Tag
             public int FontSize = 18;
-
-            // FIXME: Add SerializableField Tag
             public Color Color = Color.white;
-
-            // FIXME: Add SerializableField Tag
             public TextAnchor Alignment = TextAnchor.MiddleCenter;
-
-            // FIXME: Add SerializableField Tag
             public string Content = null;
         }
     }

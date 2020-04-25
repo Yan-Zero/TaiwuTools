@@ -18,14 +18,18 @@ using UnityUIKit.Components;
 using UnityUIKit.Core.GameObjects;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace UnityUIKit.GameObjects
 {
+    [Serializable]
     public class Block : BoxElementGameObject
     {
-        // FIXME: Add SerializableField Tag
         public Color? BackgroundColor = null;
+
+
         public Image Background => Get<Image>();
+
 
         public override void Create(bool active = true)
         {

@@ -16,15 +16,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core
 {
+    [YamlOnlySerializeSerializable]
     public abstract class ManagedGameObject : IManagedObject
     {
-        // FIXME: Add SerializableField Tag
         private string name = null;
+
+        [YamlSerializable]
         public string Name
         {
             set
@@ -39,11 +43,11 @@ namespace UnityUIKit.Core
             }
         }
 
-        // FIXME: Add SerializableField Tag
+        [YamlSerializable]
         public Dictionary<Type, ManagedComponent.ComponentAttributes> Components = new Dictionary<Type, ManagedComponent.ComponentAttributes>();
-
-        // FIXME: Add SerializableField Tag
+        [YamlSerializable]
         public List<ManagedGameObject> Children = new List<ManagedGameObject>();
+
 
         // IManagedObject
         private GameObject gameObject;
@@ -55,11 +59,10 @@ namespace UnityUIKit.Core
                 return gameObject;
             }
         }
+
+
         public T Get<T>() where T : Component => GameObject.GetComponent<T>() ?? GameObject.AddComponent<T>();
         public Component Get(Type type) => GameObject.GetComponent(type) ?? GameObject.AddComponent(type);
-
-        public bool Contains<T>() where T : Component => GameObject.GetComponent<T>() != null;
-        public bool Contains(Type type) => GameObject.GetComponent(type) != null;
 
 
         public bool Created => !Destroyed;
@@ -69,13 +72,16 @@ namespace UnityUIKit.Core
         public LayoutElement LayoutElement => Get<LayoutElement>();
         public RectTransform RectTransform => Get<RectTransform>();
 
+
         public void SetParent(ManagedGameObject managedGameObject, bool worldPositionStays = false) => SetParent(managedGameObject.GameObject, worldPositionStays);
         public void SetParent(GameObject gameObject, bool worldPositionStays = false) => SetParent(gameObject.transform, worldPositionStays);
         public void SetParent(Transform transform, bool worldPositionStays = false) => GameObject.transform.SetParent(transform, worldPositionStays);
 
+
         public void SetActive(bool value) => GameObject.SetActive(value);
 
         public T AddComponent<T>() where T : Component => GameObject.AddComponent<T>();
+
 
         public virtual void Create(bool active = true)
         {
@@ -94,6 +100,7 @@ namespace UnityUIKit.Core
             foreach (var child in Children) child.SetParent(this);
         }
 
+
         public virtual void Destroy(bool destroyChild = true)
         {
             if (!gameObject) return;
@@ -103,5 +110,10 @@ namespace UnityUIKit.Core
             UnityEngine.Object.Destroy(gameObject);
             gameObject = null;
         }
+
+
+        [YamlSerializable]
+        [YamlMember(Alias = "MGO.Type",Order = -2)]
+        public virtual string Type => this.GetType().FullName;
     }
 }

@@ -10,6 +10,7 @@ using UnityUIKit.GameObjects;
 
 namespace TaiwuUIKit.GameObjects
 {
+    [Serializable]
     public class TaiwuTitle : Container
     {
         public Direction Direction = Direction.Vertical;

@@ -10,15 +10,20 @@ using UnityUIKit.Core.GameObjects;
 
 namespace UnityUIKit.GameObjects
 {
+    [Serializable]
     public class BaseTogleButton : BoxModelGameObject
     {
+        private string text = null;
+
         public virtual Image Res_Image => null;
 
-        private string text = null;
+        [NonSerialized]
         public Label Label = null;
 
         public Color ImageColor = Color.clear;
         public Color FontColor = Color.gray;
+        public HorizontalAnchor Alignment = HorizontalAnchor.Center;
+
 
         public string Text
         {
@@ -38,7 +43,6 @@ namespace UnityUIKit.GameObjects
             }
         }
 
-        public HorizontalAnchor Alignment = HorizontalAnchor.Center;
 
         public override void Create(bool active = true)
         {

@@ -17,17 +17,19 @@
 using UnityUIKit.Core.GameObjects;
 using UnityEngine;
 using UnityEngine.UI;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.GameObjects
 {
     public partial class Container : BoxModelGameObject
     {
-        // FIXME: Add SerializableField Tag
         public Image BackgroundImage = null;
-        // FIXME: Add SerializableField Tag
         public Color? BackgroundColor = null;
 
+
+        [YamlIgnore]
         public Image Background => Get<Image>();
+
 
         public override void Create(bool active = true)
         {

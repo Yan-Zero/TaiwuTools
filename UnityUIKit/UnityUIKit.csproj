@@ -34,7 +34,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,7 +42,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -76,6 +76,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <HintPath>..\Dependencies\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="YamlDotNet, Version=8.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.8.1.1\lib\net45\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BoxElement.cs" />
@@ -87,6 +90,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="Core\GameObjects\BoxGroupGameObject.cs" />
     <Compile Include="Core\GameObjects\BoxModelGameObject.cs" />
     <Compile Include="Core\IManagedObject.cs" />
+    <Compile Include="Core\ManagedGameObjectIO.cs" />
     <Compile Include="Core\ManagedComponent.cs" />
     <Compile Include="Core\ManagedGameObject.cs" />
     <Compile Include="GameObjects\Block.cs" />
@@ -96,6 +100,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="GameObjects\Label.cs" />
     <Compile Include="GameObjects\BaseTogleButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

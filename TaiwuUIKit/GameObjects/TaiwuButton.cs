@@ -13,7 +13,7 @@ namespace TaiwuUIKit.GameObjects
         public bool ignoreLayout => true;
     }
 
-
+    [Serializable]
     public class TaiwuButton : TaiwuTogleButton
     {
         // Load static background image

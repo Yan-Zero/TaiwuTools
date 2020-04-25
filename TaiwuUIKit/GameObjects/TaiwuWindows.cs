@@ -7,17 +7,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityUIKit.Core;
 using UnityUIKit.GameObjects;
+using YamlDotNet.Serialization;
 
 namespace TaiwuUIKit.GameObjects
 {
+    [YamlOnlySerializeSerializable]
     public class TaiwuWindows : BaseFrame
     {
         private TaiwuTitle title;
-        
         private string titleText = "";
-        
+
         public CloseButton CloseButton;
 
+        [YamlSerializable]
         public string Title 
         {
             get
@@ -67,6 +69,5 @@ namespace TaiwuUIKit.GameObjects
             CloseButton.RectTransform.anchoredPosition = Vector2.zero;
         }
     }
-
 
 }

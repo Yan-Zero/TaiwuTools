@@ -17,12 +17,14 @@
 using System.Collections.Generic;
 using UnityUIKit.Core;
 using UnityEngine.UI;
+using System;
 
 namespace UnityUIKit.Components
 {
     public class BoxElement : ManagedComponent
     {
         public LayoutElement LayoutElement => Get<LayoutElement>();
+
 
         public override void Apply(ManagedComponent.ComponentAttributes componentAttributes)
         {
@@ -37,19 +39,21 @@ namespace UnityUIKit.Components
             LayoutElement.flexibleHeight = attributes.FlexibleHeight;
         }
 
+
+        [YamlOnlySerializeSerializable]
         public new class ComponentAttributes : ManagedComponent.ComponentAttributes
         {
-            // FIXME: Add SerializableField Tag
+            [YamlSerializable]
             public List<float> MinimalSize = new List<float>();
             public float MinimalWidth => MinimalSize.Count > 0 ? MinimalSize[0] : 0;
             public float MinimalHeight => MinimalSize.Count > 1 ? MinimalSize[1] : MinimalWidth;
 
-            // FIXME: Add SerializableField Tag
+            [YamlSerializable]
             public List<float> PreferredSize = new List<float>();
             public float PreferredWidth => PreferredSize.Count > 0 ? PreferredSize[0] : 0;
             public float PreferredHeight => PreferredSize.Count > 1 ? PreferredSize[1] : PreferredWidth;
 
-            // FIXME: Add SerializableField Tag
+            [YamlSerializable]
             public List<float> FlexibleSize = new List<float>();
             public float FlexibleWidth => FlexibleSize.Count > 0 ? FlexibleSize[0] : (PreferredWidth > 0 ? 0 : 1);
             public float FlexibleHeight => FlexibleSize.Count > 1 ? FlexibleSize[1] : (PreferredHeight > 0 ? 0 : 1);

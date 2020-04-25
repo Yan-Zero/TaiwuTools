@@ -20,23 +20,24 @@ using UnityUIKit.Core;
 using UnityUIKit.Core.GameObjects;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace UnityUIKit.GameObjects
 {
     public partial class Container
     {
+        [Serializable]
         public class ScrollContainer : Container
         {
-            // Override group field as layout group for Content
-            // FIXME: Add SerializableField Tag
-            public new BoxGroup.ComponentAttributes Group = new BoxGroup.ComponentAttributes();
+            private Content content;
 
-            // FIXME: Add SerializableField Tag
+            // Override group field as layout group for Content
+            public new BoxGroup.ComponentAttributes Group = new BoxGroup.ComponentAttributes();
             public Dictionary<string, ManagedGameObject> ContentChildren = new Dictionary<string, ManagedGameObject>();
+
 
             public ScrollRect ScrollRect => Get<ScrollRect>();
 
-            private Content content;
 
             public override void Create(bool active = true)
             {
@@ -48,6 +49,7 @@ namespace UnityUIKit.GameObjects
                 LayoutGroup.childForceExpandWidth = true;
                 LayoutGroup.childForceExpandHeight = true;
 
+
                 // FIXME - orphan on destroy
                 var viewport = new Viewport() {
                     Name = $"{Name}:Viewport",
@@ -57,6 +59,7 @@ namespace UnityUIKit.GameObjects
                         ForceExpandChildHeight = true,
                     }
                 };
+
 
                 // FIXME - orphan on destroy
                 content = new Content() {
@@ -80,8 +83,10 @@ namespace UnityUIKit.GameObjects
                 ScrollRect.content = content.RectTransform;
             }
 
+
             public bool Contains(string key) => ContentChildren.ContainsKey(key);
             public void Add(string key, ManagedGameObject gameObject) => (ContentChildren[key] = gameObject).SetParent(content);
+
 
             protected class Viewport : Container
             {
@@ -96,6 +101,7 @@ namespace UnityUIKit.GameObjects
                     Mask.showMaskGraphic = false;
                 }
             }
+
 
             protected class Content : BoxGroupGameObject
             {

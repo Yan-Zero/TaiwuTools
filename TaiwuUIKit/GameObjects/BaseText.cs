@@ -19,18 +19,15 @@ using UnityUIKit.Core;
 using UnityUIKit.GameObjects;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace TaiwuUIKit.GameObjects
 {
+    [Serializable]
     public class BaseText : Label
     {
-        // FIXME: Add SerializableField Tag
         public HorizontalAnchor Alignment = HorizontalAnchor.Center;
-
-        // FIXME: Add SerializableField Tag
         public bool UseBoldFont = false;
-
-        // FIXME: Add SerializableField Tag
         public bool UseOutline = true;
 
         public override void Create(bool active = true)

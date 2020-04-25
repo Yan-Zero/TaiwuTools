@@ -19,18 +19,16 @@ using UnityUIKit.Core;
 using UnityUIKit.GameObjects;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace TaiwuUIKit.GameObjects
 {
     public class BaseFrame : Container
     {
-        // FIXME: Add SerializableField Tag
         public Direction Direction = Direction.Horizontal;
 
-        // FIXME: Add SerializableField Tag
         public float Spacing = 20;
 
-        // FIXME: Add SerializableField Tag
         public List<int> Padding = new List<int>() { 20 };
 
         public override void Create(bool active = true)
@@ -44,6 +42,8 @@ namespace TaiwuUIKit.GameObjects
             Group.Direction = Direction;
             Group.Padding = Padding;
             Group.Spacing = Spacing;
+
+            
 
             base.Create(active);
         }

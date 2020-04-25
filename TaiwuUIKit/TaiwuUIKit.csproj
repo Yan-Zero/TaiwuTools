@@ -37,7 +37,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,7 +45,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -79,6 +79,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <HintPath>..\Dependencies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="YamlDotNet, Version=8.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.8.1.1\lib\net45\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\CloseButton.cs" />
@@ -91,7 +94,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="GameObjects\TaiwuButton.cs" />
     <Compile Include="GameObjects\TaiwuWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UMMShim.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UnityUIKit\UnityUIKit.csproj">
@@ -101,9 +103,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Info.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

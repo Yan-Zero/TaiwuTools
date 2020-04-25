@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityUIKit.Core;
 
 namespace TaiwuUIKit.GameObjects
 {
@@ -13,7 +14,8 @@ namespace TaiwuUIKit.GameObjects
         public bool ignoreLayout => true;
     }
 
-    [Serializable]
+
+    [YamlOnlySerializeSerializable]
     public class TaiwuButton : TaiwuTogleButton
     {
         // Load static background image

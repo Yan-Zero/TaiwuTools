@@ -7,17 +7,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityUIKit.Core;
 using UnityUIKit.Core.GameObjects;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.GameObjects
 {
-    [Serializable]
+    
     public class BaseTogleButton : BoxModelGameObject
     {
         private string text = null;
 
+        [YamlIgnore]
         public virtual Image Res_Image => null;
 
-        [NonSerialized]
+        [YamlIgnore]
         public Label Label = null;
 
         public Color ImageColor = Color.clear;

@@ -16,13 +16,17 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityUIKit.Core;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.GameObjects
 {
+    
     public partial class Container
     {
         public class CanvasContainer : Container
         {
+            [YamlIgnore]
             public Canvas Canvas => Get<Canvas>();
 
             public override void Create(bool active = true)

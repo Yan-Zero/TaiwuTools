@@ -1,9 +1,0 @@
-﻿{
-    "Id": "TaiwuInspector",
-    "DisplayName": "太吾绘卷检视器",
-    "Author": "Taiwu Modding Community",
-    "Version": "1.0.0",
-    "AssemblyName": "TaiwuInspector.dll",
-    "EntryMethod": "TaiwuInspector.UMMShim.Load",
-    "Requirements": ["TaiwuUIKit"]
-}

@@ -19,12 +19,13 @@ using System.Collections.Generic;
 using UnityUIKit.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Components
 {
     public class BoxGroup : ManagedComponent
     {
-        // FIXME: Add SerializableField Tag
+        //Why to serialize this?
         private Direction Direction;
 
         public HorizontalOrVerticalLayoutGroup LayoutGroup {
@@ -66,17 +67,14 @@ namespace UnityUIKit.Components
             LayoutGroup.childForceExpandWidth = attributes.ForceExpandChildWidth;
         }
 
+
         public new class ComponentAttributes : ManagedComponent.ComponentAttributes
         {
-            // FIXME: Add SerializableField Tag
             public Direction Direction = Direction.Vertical;
-
-            // FIXME: Add SerializableField Tag
             public TextAnchor ChildrenAlignment = TextAnchor.MiddleCenter;
-
-            // FIXME: Add SerializableField Tag
             public List<int> Padding = new List<int>();
 
+            [YamlIgnore]
             public RectOffset RectOffset
             {
                 get
@@ -111,19 +109,10 @@ namespace UnityUIKit.Components
                 }
             }
 
-            // FIXME: Add SerializableField Tag
             public float Spacing = 0;
-
-            // FIXME: Add SerializableField Tag
             public bool ControlChildHeight = true;
-
-            // FIXME: Add SerializableField Tag
             public bool ControlChildWidth = true;
-
-            // FIXME: Add SerializableField Tag
             public bool ForceExpandChildHeight = false;
-
-            // FIXME: Add SerializableField Tag
             public bool ForceExpandChildWidth = false;
         }
     }

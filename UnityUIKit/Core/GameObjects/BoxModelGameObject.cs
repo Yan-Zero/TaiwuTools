@@ -16,16 +16,19 @@
 
 using UnityUIKit.Components;
 using UnityEngine.UI;
+using System;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core.GameObjects
 {
+    [YamlOnlySerializeSerializable]
     public class BoxModelGameObject : ManagedGameObject
     {
-        // FIXME: Add SerializableField Tag
+        [YamlSerializable]
         public BoxGroup.ComponentAttributes Group = new BoxGroup.ComponentAttributes();
         public BoxGroup BoxGroup => Get<BoxGroup>();
 
-        // FIXME: Add SerializableField Tag
+        [YamlSerializable]
         public BoxElement.ComponentAttributes Element = new BoxElement.ComponentAttributes();
         public BoxElement BoxElement => Get<BoxElement>();
 

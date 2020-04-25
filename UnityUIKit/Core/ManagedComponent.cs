@@ -16,6 +16,7 @@
 
 using System;
 using UnityEngine;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core
 {
@@ -28,6 +29,7 @@ namespace UnityUIKit.Core
 
         public virtual void Apply(ComponentAttributes componentAttributes) { }
 
+        [Serializable]
         public abstract class ComponentAttributes : Core.ComponentAttributes { }
     }
 }

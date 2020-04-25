@@ -14,11 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using UnityUIKit.Components;
 using UnityUIKit.Core;
 
 namespace UnityUIKit.GameObjects
 {
+    [Serializable]
     public class Label : ManagedGameObject
     {
         // FIXME: Add SerializableField Tag

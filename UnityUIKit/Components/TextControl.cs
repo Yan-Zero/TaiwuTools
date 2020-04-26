@@ -30,6 +30,7 @@ namespace UnityUIKit.Components
             var attributes = componentAttributes as ComponentAttributes;
             if (!attributes) return;
 
+            Text.fontStyle = attributes.FontStyle;
             Text.font = attributes.Font;
             Text.fontSize = attributes.FontSize;
             Text.color = attributes.Color;
@@ -47,6 +48,7 @@ namespace UnityUIKit.Components
             public Color Color = Color.white;
             public TextAnchor Alignment = TextAnchor.MiddleCenter;
             public string Content = null;
+            public FontStyle FontStyle = FontStyle.Normal;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace UnityUIKit.GameObjects
             public ScrollRect ScrollRect => Get<ScrollRect>();
 
 
-            public override void Create(bool active = true)
+            public override void Create(bool active)
             {
                 base.Group.Padding = Group.Padding;
                 base.Create(active);
@@ -56,7 +56,7 @@ namespace UnityUIKit.GameObjects
                     Group =
                     {
                         ForceExpandChildWidth = true,
-                        ForceExpandChildHeight = true,
+                        ForceExpandChildHeight = true
                     }
                 };
 
@@ -67,7 +67,7 @@ namespace UnityUIKit.GameObjects
                     Group = {
                         Direction = Group.Direction,
                         Spacing = Group.Spacing,
-                        Padding = { 0, 20 }, // FIXME: hack
+                        Padding = { 10,20 }, // FIXME: hack
                         ControlChildHeight = true,
                         ControlChildWidth = true,
                         ForceExpandChildWidth = Group.Direction == Direction.Vertical,
@@ -112,7 +112,7 @@ namespace UnityUIKit.GameObjects
                     base.Create(active);
 
                     RectTransform.pivot = new Vector2(0, 1);
-                    LayoutGroup.childAlignment = TextAnchor.UpperLeft;
+                    LayoutGroup.childAlignment = TextAnchor.UpperCenter;
 
                     ContentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
                 }

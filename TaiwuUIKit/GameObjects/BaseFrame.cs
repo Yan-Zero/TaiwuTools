@@ -31,7 +31,7 @@ namespace TaiwuUIKit.GameObjects
 
         public List<int> Padding = new List<int>() { 20 };
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             // FIXME: use a resource loader
             var dialog = Resources.Load<GameObject>("prefabs/ui/views/ui_dialog").transform.Find("Dialog");

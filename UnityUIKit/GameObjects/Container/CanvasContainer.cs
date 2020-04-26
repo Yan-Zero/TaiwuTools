@@ -29,7 +29,7 @@ namespace UnityUIKit.GameObjects
             [YamlIgnore]
             public Canvas Canvas => Get<Canvas>();
 
-            public override void Create(bool active = true)
+            public override void Create(bool active)
             {
                 base.Create(active);
 

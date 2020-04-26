@@ -99,6 +99,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="GameObjects\Container.cs" />
     <Compile Include="GameObjects\Label.cs" />
     <Compile Include="GameObjects\BaseTogleButton.cs" />
+    <Compile Include="GameObjects\Slider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

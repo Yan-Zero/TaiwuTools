@@ -23,16 +23,25 @@ using System;
 
 namespace TaiwuUIKit.GameObjects
 {
-    [Serializable]
     public class BaseText : Label
     {
+
         public HorizontalAnchor Alignment = HorizontalAnchor.Center;
         public bool UseBoldFont = false;
         public bool UseOutline = true;
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base._Text.Font = UseBoldFont ? DateFile.instance.boldFont : DateFile.instance.font;
+
+#if DEBUG
+            ManagedGameObjectIO.debugLogger.Start($"BaseText.{Name}.Create");
+            ManagedGameObjectIO.debugLogger.WriteLine($"UseBoldFont : {UseBoldFont}");
+            ManagedGameObjectIO.debugLogger.WriteLine($"_Text.Font : {_Text.Font.name}");
+            ManagedGameObjectIO.debugLogger.WriteLine($"DateFile.instance.boldFont : {DateFile.instance.boldFont.name}");
+            ManagedGameObjectIO.debugLogger.WriteLine($"DateFile.instance.font : {DateFile.instance.font.name}");
+            ManagedGameObjectIO.debugLogger.End();
+#endif
 
             base._Text.Alignment = (new Dictionary<HorizontalAnchor, TextAnchor>() {
                 { HorizontalAnchor.Left, TextAnchor.MiddleLeft },
@@ -40,9 +49,10 @@ namespace TaiwuUIKit.GameObjects
                 { HorizontalAnchor.Right, TextAnchor.MiddleRight },
             })[Alignment];
 
+
             base.Create(active);
 
-            if (UseOutline) Get<Outline>();
+            if (UseOutline) Get<Outline>().effectColor = new Color(0,0,0,1);
             Get<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         }
     }

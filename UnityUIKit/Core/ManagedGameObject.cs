@@ -30,6 +30,8 @@ namespace UnityUIKit.Core
         private string name = null;
 
         [YamlSerializable]
+        public bool DefaultActive = true;
+        [YamlSerializable]
         public string Name
         {
             set
@@ -84,7 +86,7 @@ namespace UnityUIKit.Core
         public T AddComponent<T>() where T : Component => GameObject.AddComponent<T>();
 
 
-        public virtual void Create(bool active = true)
+        public virtual void Create(bool active)
         {
             if (gameObject) return;
             gameObject = new GameObject(name);
@@ -101,6 +103,10 @@ namespace UnityUIKit.Core
             foreach (var child in Children) child.SetParent(this);
         }
 
+        public virtual void Create()
+        {
+            Create(DefaultActive);
+        }
 
         public virtual void Destroy(bool destroyChild = true)
         {

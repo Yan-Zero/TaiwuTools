@@ -31,7 +31,7 @@ namespace UnityUIKit.GameObjects
         public Image Background => Get<Image>();
 
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base.Create(active);
 

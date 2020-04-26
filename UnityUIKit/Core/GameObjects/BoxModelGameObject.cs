@@ -34,7 +34,7 @@ namespace UnityUIKit.Core.GameObjects
 
         public HorizontalOrVerticalLayoutGroup LayoutGroup => BoxGroup.LayoutGroup;
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base.Create(active);
 

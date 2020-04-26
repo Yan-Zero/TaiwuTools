@@ -24,7 +24,7 @@ namespace UnityUIKit.Core.GameObjects
         public BoxElement.ComponentAttributes Element = new BoxElement.ComponentAttributes();
         public BoxElement BoxElement => Get<BoxElement>();
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base.Create(active);
 

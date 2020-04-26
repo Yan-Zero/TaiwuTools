@@ -79,12 +79,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <HintPath>..\Dependencies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\The Scroll Of Taiwu\The Scroll Of Taiwu Alpha V1.0_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="YamlDotNet, Version=8.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
       <HintPath>..\packages\YamlDotNet.8.1.1\lib\net45\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\CloseButton.cs" />
+    <Compile Include="GameObjects\TaiwuLabel.cs" />
+    <Compile Include="GameObjects\TaiwuSilder.cs" />
     <Compile Include="GameObjects\TaiwuTitle.cs" />
     <Compile Include="GameObjects\TaiwuToggle.cs" />
     <Compile Include="GameObjects\TaiwuTogleButton.cs" />
@@ -105,9 +111,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)..\bin\Debug" "$(ProjectDir)..\..\Taiwu Editor\lib" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>

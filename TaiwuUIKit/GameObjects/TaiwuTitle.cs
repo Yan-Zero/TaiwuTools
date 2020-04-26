@@ -35,7 +35,7 @@ namespace TaiwuUIKit.GameObjects
             }
         }
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             var nameBack = Resources.Load<GameObject>("prefabs/ui/views/ui_systemsetting").transform.Find("SystemSetting/NameBack");
             var backgroundImage = nameBack.GetComponent<CImage>() as Image;

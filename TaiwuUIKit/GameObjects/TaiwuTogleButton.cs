@@ -34,7 +34,7 @@ namespace TaiwuUIKit.GameObjects
         [YamlSerializable]
         public bool UseBoldFont = false;
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base.ImageColor = Res_Image.color;
             base.Label = new BaseText()

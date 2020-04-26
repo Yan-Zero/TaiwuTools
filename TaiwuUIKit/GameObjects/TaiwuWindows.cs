@@ -42,7 +42,7 @@ namespace TaiwuUIKit.GameObjects
             }
         }
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             title = new TaiwuTitle
             {

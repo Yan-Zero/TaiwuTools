@@ -35,13 +35,12 @@ namespace TaiwuUIKit.GameObjects
             OnClick.Invoke(this);
         }
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base.Text = null;
             base.Create(active);
 
-            Get<LayoutIgnorer>();
-            GameObject.Destroy(Get<LayoutElement>());
+            Get<LayoutElement>().ignoreLayout = true;
 
             RectTransform.sizeDelta = new Vector2(40, 40);
             RectTransform.anchorMax = new Vector2(1, 1);

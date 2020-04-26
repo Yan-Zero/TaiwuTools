@@ -9,12 +9,6 @@ using UnityUIKit.Core;
 
 namespace TaiwuUIKit.GameObjects
 {
-    public class LayoutIgnorer : MonoBehaviour, ILayoutIgnorer
-    {
-        public bool ignoreLayout => true;
-    }
-
-
     [YamlOnlySerializeSerializable]
     public class TaiwuButton : TaiwuTogleButton
     {
@@ -37,7 +31,7 @@ namespace TaiwuUIKit.GameObjects
 
         public Action<TaiwuButton> OnClick;
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             Group.Padding = new List<int>() { 10, 20 };
 

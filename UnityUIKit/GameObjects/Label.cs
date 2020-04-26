@@ -40,7 +40,7 @@ namespace UnityUIKit.GameObjects
             }
         }
 
-        public override void Create(bool active = true)
+        public override void Create(bool active)
         {
             base.Create(active);
 

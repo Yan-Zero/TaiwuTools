@@ -18,8 +18,8 @@ Plan of this:
 #### BoxModelGameObject
 Have both BoxElementGameObject and BoxGroupGameObject function.
 ### Non-core
-It is only base class.
-(Mean that a large part of them aren't used easy.)
+They are only base class.
+(Mean that a large part of them aren't used easily.)
 #### Label
 Text of Unity.
 * Need to complete description.

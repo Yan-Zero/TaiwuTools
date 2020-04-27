@@ -7,28 +7,28 @@ Viz , Yan
 ## Unity UI Kit
 ### Core
 #### BoxElementGameObject
-Use LayoutElement.
-Can auto resize itself by parm.
+Use LayoutElement.  
+Can auto resize itself by parm.  
 #### BoxGroupGameObject
-Use LayoutGroup.
-It only support Horizontal and Vertical.
-Can auto sort and resize children.
-Plan of this:
+Use LayoutGroup.  
+It only support Horizontal and Vertical.  
+Can auto sort and resize children.  
+Plan of this:  
 * Add support of Grid.
 #### BoxModelGameObject
-Have both BoxElementGameObject and BoxGroupGameObject function.
+Have both BoxElementGameObject and BoxGroupGameObject function.  
 ### Non-core
-They are only base class.
-(Mean that a large part of them aren't used easily.)
+They are only base class.  
+(Mean that a large part of them aren't used easily.)  
 #### Label
-Text of Unity.
-* Need to complete description.
+Text of Unity.  
+* Need to complete description.  
 #### Slider
-Slider of Unity.
+Slider of Unity.  
 * Need to complete description.
 #### Base Toggle Button
-DONT USE THIS!
-It is base class of Toggle and Button.
+DONT USE THIS!  
+It is base class of Toggle and Button.  
 #### Container
 It is BoxModelGameObject but it has background.
 ##### Container.Canvas

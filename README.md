@@ -31,10 +31,12 @@ Slider of Unity.
 DONT USE THIS!
 It is base class of Toggle and Button.
 ##### Container
-It is BoxModelGameObject but it have background.
+It is BoxModelGameObject but it has background.
 ###### Container.Canvas
 Add Canvas UGUI.
 ###### Container.Scroll
 List View.
 ##### Block
-It is BoxElementGameObject but it have background.
+It is BoxElementGameObject but it has background.
+### Taiwu UI Kit
+* Need to complete description.

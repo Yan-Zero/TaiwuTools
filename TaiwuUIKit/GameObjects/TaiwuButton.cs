@@ -10,7 +10,7 @@ using UnityUIKit.Core;
 namespace TaiwuUIKit.GameObjects
 {
     [YamlOnlySerializeSerializable]
-    public class TaiwuButton : TaiwuTogleButton
+    public class TaiwuButton : TaiwuToggleButton
     {
         // Load static background image
         private static readonly Image _image;

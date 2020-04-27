@@ -31,9 +31,7 @@ namespace TaiwuUIKit.GameObjects
         public Style BackgroundStyle = Style.Subtitle;
 
         [YamlIgnore]
-        public BaseText _Text = new BaseText()
-        {
-        };
+        public BaseText _Text = new BaseText();
 
         public HorizontalAnchor Alignment
         {
@@ -52,15 +50,9 @@ namespace TaiwuUIKit.GameObjects
         }
         public string Text
         {
-            get => m_Text;
-            set
-            {
-                m_Text = value;
-                if (_Text.Created) _Text.Text = m_Text;
-            }
+            get => _Text.Text;
+            set => _Text.Text = value;
         }
-
-        private string m_Text;
 
         public override void Create(bool active)
         {
@@ -73,7 +65,6 @@ namespace TaiwuUIKit.GameObjects
             base.Create(active);
 
             _Text.Name = $"Text.{Name}";
-            _Text.Text = m_Text;
             _Text.SetParent(this);
 
             Image bg;

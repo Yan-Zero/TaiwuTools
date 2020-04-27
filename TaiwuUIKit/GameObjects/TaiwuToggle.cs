@@ -93,6 +93,9 @@ namespace TaiwuUIKit.GameObjects
 
             base.Create(active);
 
+            if(!string.IsNullOrEmpty(TipTitle) || !string.IsNullOrEmpty(TipContant))
+                Get<MouseTipDisplayer>().param = TipParm.ToArray();
+
             var Toggle = Get<Toggle>();
             Toggle.transition = Selectable.Transition.ColorTint;
             Toggle.colors = Res_Colors;

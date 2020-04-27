@@ -62,6 +62,9 @@ namespace TaiwuUIKit.GameObjects
 
             base.Create(active);
 
+            if (!string.IsNullOrEmpty(TipTitle) || !string.IsNullOrEmpty(TipContant))
+                Get<MouseTipDisplayer>().param = TipParm.ToArray();
+
             var slider = Get<UnityEngine.UI.Slider>();
             var fillRectLayoutGroup = slider.fillRect.GetComponent<LayoutGroup>();
             var i = slider.fillRect.GetChild(0);

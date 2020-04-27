@@ -29,6 +29,7 @@ namespace TaiwuUIKit.GameObjects
         public HorizontalAnchor Alignment = HorizontalAnchor.Center;
         public bool UseBoldFont = false;
         public bool UseOutline = true;
+        public Color OutlineColor = new Color(0, 0, 0, 1);
 
         public override void Create(bool active)
         {
@@ -52,8 +53,21 @@ namespace TaiwuUIKit.GameObjects
 
             base.Create(active);
 
-            if (UseOutline) Get<Outline>().effectColor = new Color(0,0,0,1);
+            if (UseOutline) Get<Outline>().effectColor = OutlineColor;
             Get<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        }
+
+        public override void Apply()
+        {
+            base.Apply();
+            if(Created)
+            {
+                base._Text.Font = UseBoldFont ? DateFile.instance.boldFont : DateFile.instance.font;
+                if (UseOutline)
+                    GameObject.Destroy(Get<Outline>());
+                else
+                    Get<Outline>().effectColor = OutlineColor;
+            }
         }
     }
 }

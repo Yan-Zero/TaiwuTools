@@ -14,35 +14,30 @@ namespace UnityUIKit.GameObjects
     
     public class BaseTogleButton : BoxModelGameObject
     {
-        private string text = null;
-
         [YamlIgnore]
         public virtual Image Res_Image => null;
+        private Label m_Label = new Label();
 
         [YamlIgnore]
-        public Label Label = null;
+        public virtual Label Label => m_Label ;
+        public BaseTogleButton()
+        {
+            Label._Text.Color = Color.gray;
+        }
+
 
         public Color ImageColor = Color.clear;
-        public Color FontColor = Color.gray;
-        public HorizontalAnchor Alignment = HorizontalAnchor.Center;
+        public Color FontColor
+        {
+            get => Label._Text.Color;
+            set => Label._Text.Color = value;
+        }
 
 
         public string Text
         {
-            get
-            {
-                return text;
-            }
-            set
-            {
-                text = value;
-                if (Label != null && Label.Created)
-                {
-                    Label.Text = text;
-                    if (!string.IsNullOrEmpty(value))
-                        Label.SetActive(true);
-                }
-            }
+            get => Label.Text;
+            set => Label.Text = value;
         }
 
 
@@ -57,21 +52,7 @@ namespace UnityUIKit.GameObjects
             background.sprite = Res_Image.sprite;
             background.color = ImageColor;
 
-            if(Label == null)
-            {
-                Label = new Label()
-                {
-                    Name = $"{Name}:Text",
-                    Text = text,
-                    _Text =
-                    {
-                        Color = FontColor
-                    }
-                };
-            }
-
-            if (string.IsNullOrEmpty(text))
-                Label.Create(false);
+            Label.Name = $"{Name}:Text";
             Label.SetParent(this);
         }
     }

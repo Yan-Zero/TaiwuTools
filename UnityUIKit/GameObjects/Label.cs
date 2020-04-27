@@ -17,14 +17,15 @@
 using System;
 using UnityUIKit.Components;
 using UnityUIKit.Core;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.GameObjects
 {
-    [Serializable]
+
     public class Label : ManagedGameObject
     {
-        // FIXME: Add SerializableField Tag
         public TextControl.ComponentAttributes _Text = new TextControl.ComponentAttributes();
+        [YamlIgnore]
         public TextControl TextControl => Get<TextControl>();
 
         public string Text
@@ -47,9 +48,10 @@ namespace UnityUIKit.GameObjects
             TextControl.Apply(_Text);
         }
 
-        public void Apply()
+        public virtual void Apply()
         {
-            TextControl.Apply(_Text);
+            if(Created)
+                TextControl.Apply(_Text);
         }
     }
 }

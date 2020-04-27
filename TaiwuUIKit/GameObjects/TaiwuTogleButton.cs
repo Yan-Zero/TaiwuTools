@@ -26,25 +26,30 @@ using System;
 namespace TaiwuUIKit.GameObjects
 {
     [YamlOnlySerializeSerializable]
-    public class TaiwuTogleButton : BaseTogleButton
+    public class TaiwuToggleButton : BaseTogleButton
     {
         public virtual PointerEnter Res_PointerEnter => null;
         public virtual PointerClick Res_PointerClick => null;
 
         [YamlSerializable]
-        public bool UseBoldFont = false;
+        public bool UseBoldFont
+        {
+            get => (Label as BaseText).UseBoldFont;
+            set => (Label as BaseText).UseBoldFont = value;
+        }
+        [YamlSerializable]
+        public bool UseOutline
+        {
+            get => (Label as BaseText).UseOutline;
+            set => (Label as BaseText).UseOutline = value;
+        }
+
+        private BaseText m_Label = new BaseText();
+        public override Label Label => m_Label;
 
         public override void Create(bool active)
         {
             base.ImageColor = Res_Image.color;
-            base.Label = new BaseText()
-            {
-                Name = $"{Name}:Text",
-                Text = Text,
-                Alignment = Alignment,
-                UseBoldFont = UseBoldFont,
-                UseOutline = true,
-            };
 
             base.Create(active);
             if(Res_PointerEnter != null)

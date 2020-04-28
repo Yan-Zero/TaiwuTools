@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityUIKit.Core;
+using UnityUIKit.GameObjects;
 
 namespace TaiwuUIKit.GameObjects
 {
     [YamlOnlySerializeSerializable]
-    public class TaiwuButton : TaiwuToggleButton
+    public class TaiwuButton : UnityUIKit.GameObjects.Button
     {
         // Load static background image
         private static readonly Image _image;
@@ -18,8 +19,8 @@ namespace TaiwuUIKit.GameObjects
         private static readonly PointerClick _pointerClick;
 
         public override Image Res_Image => _image;
-        public override PointerEnter Res_PointerEnter => _pointerEnter;
-        public override PointerClick Res_PointerClick => _pointerClick;
+        public virtual PointerEnter Res_PointerEnter => _pointerEnter;
+        public virtual PointerClick Res_PointerClick => _pointerClick;
 
         static TaiwuButton()
         {
@@ -29,7 +30,34 @@ namespace TaiwuUIKit.GameObjects
             _pointerClick = startBtn.GetComponent<PointerClick>();
         }
 
-        public Action<TaiwuButton> OnClick;
+        [YamlSerializable]
+        public bool UseBoldFont
+        {
+            get
+            {
+                return (Label as BaseText).UseBoldFont;
+            }
+            set
+            {
+                (Label as BaseText).UseBoldFont = value;
+            }
+        }
+
+        [YamlSerializable]
+        public bool UseOutline
+        {
+            get
+            {
+                return (Label as BaseText).UseOutline;
+            }
+            set
+            {
+                (Label as BaseText).UseOutline = value;
+            }
+        }
+
+        public override Label Label => m_Label;
+        private BaseText m_Label = new BaseText();
 
         public override void Create(bool active)
         {
@@ -37,21 +65,26 @@ namespace TaiwuUIKit.GameObjects
 
             base.Create(active);
 
-            var bt = Get<Button>();
-            bt.onClick.AddListener(OnClick_Invoke);
-            bt.image = Get<Image>();
-
             if (Res_PointerClick != null)
             {
                 var pc = Get<PointerClick>();
                 pc.playSE = Res_PointerClick.playSE;
                 pc.SEKey = Res_PointerClick.SEKey;
             }
-        }
-
-        private void OnClick_Invoke()
-        {
-            OnClick?.Invoke(this);
+            if (Res_PointerEnter != null)
+            {
+                PointerEnter pointerEnter = Get<PointerEnter>();
+                pointerEnter.changeSize = Res_PointerEnter.changeSize;
+                pointerEnter.restSize = Res_PointerEnter.restSize;
+                pointerEnter.xMirror = Res_PointerEnter.xMirror;
+                pointerEnter.yMirror = Res_PointerEnter.yMirror;
+                pointerEnter.move = Res_PointerEnter.move;
+                pointerEnter.moveX = Res_PointerEnter.moveX;
+                pointerEnter.moveSize = Res_PointerEnter.moveSize;
+                pointerEnter.restMoveSize = Res_PointerEnter.restMoveSize;
+                pointerEnter.SEKey = Res_PointerEnter.SEKey;
+                pointerEnter.changeTarget = Res_PointerEnter.changeTarget;
+            }
         }
     }
 }

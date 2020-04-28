@@ -8,8 +8,8 @@
 ---
 + [Introduction](#Introduction)
 + [ManagedGameObject](#ManagedGameObject)
-	+ [Unity UI Kits](#Unity UI Kit)
-	+ [Taiwu UI Kits](#Taiwu UI Kit)
+	+ [Unity UI Kits](#Unity-UI-Kit)
+	+ [Taiwu UI Kits](#Taiwu-UI-Kit)
 
 ## Introduction
 

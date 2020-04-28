@@ -62,6 +62,8 @@ namespace TaiwuUIKit.GameObjects
         public override void Create(bool active)
         {
             Group.Padding = new List<int>() { 10, 20 };
+            if(base.ImageColor == Color.clear)
+                base.ImageColor = Res_Image.color;
 
             base.Create(active);
 

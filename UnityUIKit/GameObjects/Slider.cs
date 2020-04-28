@@ -24,11 +24,22 @@ namespace UnityUIKit.GameObjects
         public BoxModelGameObject BackgroundContainer;
 
 
-        private float m_MaxValue = 100;
-        private float m_MinValue = 0;
-        private float m_NormalizedValue = 50;
-        private bool m_wholeNumber = false;
+        protected float m_MaxValue = 100;
+        protected float m_MinValue = 0;
+        protected float m_NormalizedValue = 50;
+        protected bool m_wholeNumber = false;
+        protected bool m_interactable = true;
 
+        [YamlSerializable]
+        public bool Interactable
+        {
+            get => m_interactable;
+            set
+            {
+                m_interactable = value;
+                if (UnitySlider) UnitySlider.interactable = m_interactable;
+            }
+        }
         [YamlSerializable]
         public float MaxValue
         {
@@ -59,6 +70,7 @@ namespace UnityUIKit.GameObjects
                 if(UnitySlider) UnitySlider.normalizedValue = m_NormalizedValue;
             }
         }
+        [YamlSerializable]
         public bool WholeNumber
         {
             get => m_wholeNumber;
@@ -110,6 +122,7 @@ namespace UnityUIKit.GameObjects
             Slider.minValue = MinValue;
             Slider.normalizedValue = m_NormalizedValue;
             Slider.wholeNumbers = m_wholeNumber;
+            Slider.interactable = m_interactable;
             Slider.onValueChanged.AddListener(onValueChanged);
 
             BoxElementGameObject fillArea;
@@ -173,6 +186,7 @@ namespace UnityUIKit.GameObjects
                 Slider.image = silderHandle_image;
             }
             Slider.handleRect = silderHandle_image.rectTransform;
+            UnitySlider = Slider;
         }
 
         private void onValueChanged(float value)

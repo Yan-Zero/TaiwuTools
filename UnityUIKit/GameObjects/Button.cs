@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UI;
+using UnityUIKit.Core;
 
 namespace UnityUIKit.GameObjects
 {
@@ -16,6 +17,19 @@ namespace UnityUIKit.GameObjects
 			OnClick?.Invoke(this);
 		}
 
+		public UnityEngine.UI.Button UnityButton;
+
+		[YamlSerializable]
+		public override bool Interactable
+		{
+			get => m_interactable;
+			set
+			{
+				m_interactable = value;
+				if (UnityButton) UnityButton.interactable = m_interactable;
+			}
+		}
+
 		public override void Create(bool active)
 		{
 			if (Group.Padding.Count == 0)
@@ -23,9 +37,10 @@ namespace UnityUIKit.GameObjects
 
 			base.Create(active);
 
-			UnityEngine.UI.Button button = Get<UnityEngine.UI.Button>();
-			button.onClick.AddListener(OnClick_Invoke);
-			button.image = Get<Image>();
+			UnityButton = Get<UnityEngine.UI.Button>();
+			UnityButton.onClick.AddListener(OnClick_Invoke);
+			UnityButton.image = Get<Image>();
+			UnityButton.interactable = m_interactable;
 		}
 	}
 }

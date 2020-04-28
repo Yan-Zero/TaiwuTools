@@ -76,9 +76,17 @@ namespace UnityUIKit.Core
         public RectTransform RectTransform => Get<RectTransform>();
 
 
-        public void SetParent(ManagedGameObject managedGameObject, bool worldPositionStays = false) => SetParent(managedGameObject.GameObject, worldPositionStays);
+        public void SetParent(ManagedGameObject managedGameObject, bool worldPositionStays = false)
+        {
+            Parent = managedGameObject;
+            GameObject.transform.SetParent(managedGameObject.RectTransform, worldPositionStays);
+        }
         public void SetParent(GameObject gameObject, bool worldPositionStays = false) => SetParent(gameObject.transform, worldPositionStays);
-        public void SetParent(Transform transform, bool worldPositionStays = false) => GameObject.transform.SetParent(transform, worldPositionStays);
+        public void SetParent(Transform transform, bool worldPositionStays = false)
+        {
+            GameObject.transform.SetParent(transform, worldPositionStays);
+            Parent = null;
+        }
 
 
         public void SetActive(bool value) => GameObject.SetActive(value);
@@ -118,6 +126,8 @@ namespace UnityUIKit.Core
             gameObject = null;
         }
 
+
+        public ManagedGameObject Parent;
 
         [YamlSerializable]
         [YamlMember(Alias = "MGO.Type",Order = -2)]

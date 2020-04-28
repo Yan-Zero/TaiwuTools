@@ -12,24 +12,35 @@ using YamlDotNet.Serialization;
 namespace TaiwuUIKit.GameObjects
 {
     [YamlOnlySerializeSerializable]
-    public class TaiwuSilder : UnityUIKit.GameObjects.Slider
+    public class TaiwuSlider : UnityUIKit.GameObjects.Slider
     {
         private static readonly Image _handleImage = null;
         private static readonly Image _fillAreaImage = null;
         private static readonly Image _backgroundImage = null;
         private static readonly PointerEnter _pointerEnter = null;
+        private static readonly ColorBlock _colorBlock;
 
         public override Image Res_SilderHandleImage => _handleImage;
         public override Image Res_FillAreaImage => _fillAreaImage;
         public override Image Res_BackgroundImage => _backgroundImage;
 
-        static TaiwuSilder()
+        static TaiwuSlider()
         {
             var silder = Resources.Load<GameObject>("prefabs/ui/views/ui_systemsetting").transform.Find("SystemSetting/SetBackup/BackupIntervalSlider");
             _handleImage = silder.GetComponent<CSlider>().image;
             _backgroundImage = silder.Find("Background").GetComponent<CImage>() as Image;
             _fillAreaImage = silder.Find("SEVolumeBack/Image").GetComponent<CImage>() as Image;
             _pointerEnter = silder.Find("Handle Slide Area/BackupHandle").GetComponent<PointerEnter>() as PointerEnter;
+
+            _colorBlock = new ColorBlock()
+            {
+                normalColor = new Color32(251, 251, 251, 255),
+                highlightedColor = new Color32(245, 245, 245, 255),
+                pressedColor = new Color32(142, 142, 142, 255),
+                disabledColor = new Color32(75, 75, 75, 255),
+                colorMultiplier = 1,
+                fadeDuration = 0.1f
+            };
         }
 
         private List<string> TipParm = new List<string>() { "","" };
@@ -71,12 +82,17 @@ namespace TaiwuUIKit.GameObjects
             i.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 3);
             fillRectLayoutGroup.padding.left = 10;
             fillRectLayoutGroup.padding.right = 10;
+            i.GetComponent<Image>().raycastTarget = false;
+            BackgroundContainer.Get<Image>().raycastTarget = false;
             slider.fillRect = null;
+
+            slider.colors = _colorBlock;
 
             var sliderHandle = slider.handleRect;
             sliderHandle.sizeDelta = new Vector2(24, 24);
-            slider.handleRect.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(20, 0);
-            slider.handleRect.parent.GetComponent<RectTransform>().offsetMax = new Vector2(-20, 0);
+            sliderHandle.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(20, 0);
+            sliderHandle.parent.GetComponent<RectTransform>().offsetMax = new Vector2(-20, 0);
+
 
             Get<PointerDrag>();
 

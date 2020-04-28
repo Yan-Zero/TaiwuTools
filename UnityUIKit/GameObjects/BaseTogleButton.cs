@@ -40,6 +40,16 @@ namespace UnityUIKit.GameObjects
             set => Label.Text = value;
         }
 
+        protected bool m_interactable = true;
+        public virtual bool Interactable
+        {
+            get => m_interactable;
+            set
+            {
+                m_interactable = value;
+            }
+        }
+
 
         public override void Create(bool active)
         {

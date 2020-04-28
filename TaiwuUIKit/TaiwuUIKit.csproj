@@ -90,7 +90,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <ItemGroup>
     <Compile Include="GameObjects\CloseButton.cs" />
     <Compile Include="GameObjects\TaiwuLabel.cs" />
-    <Compile Include="GameObjects\TaiwuSilder.cs" />
+    <Compile Include="GameObjects\TaiwuSlider.cs" />
     <Compile Include="GameObjects\TaiwuTitle.cs" />
     <Compile Include="GameObjects\TaiwuToggle.cs" />
     <Compile Include="GameObjects\BaseFrame.cs" />

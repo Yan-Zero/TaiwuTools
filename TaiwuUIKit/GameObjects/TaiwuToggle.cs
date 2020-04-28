@@ -68,6 +68,33 @@ namespace TaiwuUIKit.GameObjects
         public override Label Label => m_Label;
         private BaseText m_Label = new BaseText();
 
+        [YamlSerializable]
+        public bool UseBoldFont
+        {
+            get
+            {
+                return (Label as BaseText).UseBoldFont;
+            }
+            set
+            {
+                (Label as BaseText).UseBoldFont = value;
+            }
+        }
+
+        [YamlSerializable]
+        public bool UseOutline
+        {
+            get
+            {
+                return (Label as BaseText).UseOutline;
+            }
+            set
+            {
+                (Label as BaseText).UseOutline = value;
+            }
+        }
+
+
         public override void Create(bool active = true)
         {
             if(Element.PreferredSize.Count == 0)

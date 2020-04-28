@@ -94,12 +94,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="Core\ManagedComponent.cs" />
     <Compile Include="Core\ManagedGameObject.cs" />
     <Compile Include="GameObjects\Block.cs" />
+    <Compile Include="GameObjects\Button.cs" />
     <Compile Include="GameObjects\Container\CanvasContainer.cs" />
     <Compile Include="GameObjects\Container\ScrollContainer.cs" />
     <Compile Include="GameObjects\Container.cs" />
     <Compile Include="GameObjects\Label.cs" />
     <Compile Include="GameObjects\BaseTogleButton.cs" />
     <Compile Include="GameObjects\Slider.cs" />
+    <Compile Include="GameObjects\Toggle.cs" />
+    <Compile Include="GameObjects\ToggleGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

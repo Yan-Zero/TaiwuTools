@@ -92,37 +92,34 @@
 
   + Container
   
-  It is BoxModelGameObject but it has background.
-      + Need to complete description.
-
-    + Container.Canvas
+    It is BoxModelGameObject but it has background.
   
-    Add Canvas UGUI.
+  + Need to complete description.
   
-      + Need to complete description.
+      + Container.Canvas
   
-    + Container.Scroll
-
-      List View.
-
+        Add Canvas UGUI.
         + Need to complete description.
   
-  + Container.GridContainer
-  
-    Container but use BoxGrid
-  
-        + Need to complete description.
+      + Container.Scroll
 
+        List View.
+        + Need to complete description.
+  
+    + Container.GridContainer
+  
+      Container but use BoxGrid.
+  
     + Container.FitterContainer
-
-      Container but use BoxAutoSizeModelGameObject
-      
-        + Need to complete description.
+  
+    Container but use BoxAutoSizeModelGameObject.
+  
+      + Need to complete description.
   
   + Block
   
     It is BoxElementGameObject but it has background.
-    
+  
       + Need to complete description.
 
 ### Taiwu UI Kit

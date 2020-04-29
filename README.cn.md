@@ -74,32 +74,32 @@
     + 单选开关组 Toggle Group
 
       一种用来容纳多个开关的容器。  
-    这个开关组的所有类型为开关的子元素都会和它绑定。
+      这个开关组的所有类型为开关的子元素都会和它绑定。
   
-  + 按钮 Button
+    + 按钮 Button
   
-    最基础的一种按钮，可以直接使用。
+      最基础的一种按钮，可以直接使用。
   
-+ 容器 Container
-  
-  一个拥有背景的盒式模型。
-  
-  + 画布容器 Container.Canvas
-  
-    添加画布 UGUI。
-  
+  + 容器 Container
+    
+    一个拥有背景的盒式模型。
+    
+    + 画布容器 Container.Canvas
+    
+      添加画布 UGUI。
+    
     + 滚动容器 Container.Scroll
-  
+    
       列表视图。
-      
+    
     + 网格容器 Container.GridContainer
-  
+    
       网格视图。
-  
+    
     + 适配容器 Container.FitterContainer
-  
+    
       使用了盒式自适应模型的容器。
-  
+    
   + 块 Block
   
     一个拥有背景的盒式元素。

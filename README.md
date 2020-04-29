@@ -24,31 +24,33 @@
   + BoxElementGameObject
 
     Use LayoutElement.  
-    Can auto resize itself by parm.  
+    Can auto resize itself by parameters.  
 
   + BoxSizeFitterGameObject
 
     Use ContentSizeFitter.  
-    Can resize parent to adapt children.  
+    Can resize parent to fit children.  
 
   + BoxGroupGameObject
 
     Use LayoutGroup.  
-    It support Horizontal and Vertical.  
+    It support Horizontal and Vertical.   
     Can auto sort and resize children.  
 
-  + BoxGirdGameObject(Base on BoxSizeFitterGameObject)
+  + BoxGirdGameObject
 
-    Use GridLayoutGroup.  
-    But it can automatically set children's width to adapt parent.  
+    + Based on BoxSizeFitterGameObject
 
-  + BoxModelGameObject(Base on BoxElementGameObject,BoxGroupGameObject)
+    Use GridLayoutGroup.   
+    But it can automatically adapt children's width to parent.
 
-    Have both BoxElementGameObject on and BoxGroupGameObject function.  
+  + BoxModelGameObject
 
-  + BoxAutoSizeModelGameObject(Base on BoxSizeFitterGameObject,BoxGroupGameObject)
+    + Based on BoxElementGameObject and BoxGroupGameObject  
 
-    Have both BoxSizeFitterGameObject and BoxGroupGameObject function.  
+  + BoxAutoSizeModelGameObject
+
+    + Based on BoxSizeFitterGameObject and BoxGroupGameObject
 
 + Non-core
 
@@ -70,7 +72,7 @@
   + Base Toggle Button
 
     DON NOT USE THIS!  
-    It is base class of Toggle and Button.  
+    A common base class for Toggle and Button.  
 
     + Toggle
 
@@ -79,41 +81,48 @@
 
     + Toggle Group
 
-      It is Container,but it can also set toggleGroup of toggle that in children.
+      Container, but just expect Toggles in it.  
+
+      All children (of course, they are Toggles) will bind to their parent.
 
     + Button
-
-      It is base class of Button.  
+  
+    It is base class of Button.  
       (But it can work.)  
 
   + Container
-
-    It is BoxModelGameObject but it has background.
+  
+  It is BoxModelGameObject but it has background.
       + Need to complete description.
 
     + Container.Canvas
-
-      Add Canvas UGUI.
-        + Need to complete description.
-
+  
+    Add Canvas UGUI.
+  
+      + Need to complete description.
+  
     + Container.Scroll
 
       List View.
+
         + Need to complete description.
-
-    + Container.GridContainer
-
-      Container but use BoxGrid
+  
+  + Container.GridContainer
+  
+    Container but use BoxGrid
+  
         + Need to complete description.
 
     + Container.FitterContainer
 
       Container but use BoxAutoSizeModelGameObject
+      
         + Need to complete description.
-
+  
   + Block
-
+  
     It is BoxElementGameObject but it has background.
+    
       + Need to complete description.
 
 ### Taiwu UI Kit

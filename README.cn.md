@@ -22,17 +22,14 @@
 
   + 盒式元素对象 BoxElementGameObject
 
-    使用 LayoutElement。
-    可以根据参数自动调节大小。
+    使用 LayoutElement。  
+    可以根据参数自动调节大小。  
 
   + 盒式组对象 BoxGroupGameObject
 
-    使用 LayoutGroup。 
-    只支持水平或竖直布局。
-    可以自动排序并调整子元素大小。
-    待办事项:  
-
-    + 支持网格化.
+    使用 LayoutGroup。  
+    支持水平或竖直布局。  
+    可以自动排序并调整子元素大小。  
 
   + 盒式模型 BoxModelGameObject
 
@@ -42,21 +39,21 @@
 
   这里只是一些基类，换言之，这些大都不怎么易用。
   
-+ 标签 Label
+  + 标签 Label
   
-  Unity文本。
+    Unity 文本。
   
-  + 暂无描述。
+    + 暂无描述。
   
-+ 滑条 Slider
+  + 滑条 Slider
   
-  Unity滑条。
+    Unity 滑条。
   
-  + 暂无描述。
+    + 暂无描述。
   
-+ 开关、按钮基础 Base Toggle Button
+  + 开关、按钮基础 Base Toggle Button
   
-  不可直接使用！！！ 
+    不可直接使用！！！  
   
     该类型为开关和按钮的基类。
 
@@ -64,13 +61,13 @@
 
     一个拥有背景的盒式模型。
 
-  + 画布容器 Container.Canvas
+    + 画布容器 Container.Canvas
 
-    添加画布 UGUI。
+      添加画布 UGUI。
 
-  + 滚动容器 Container.Scroll
+    + 滚动容器 Container.Scroll
 
-    列表视图。
+      列表视图。
 
   + 块 Block
 

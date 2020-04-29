@@ -75,7 +75,7 @@
     + Toggle
 
       It is base class of Toggle.  
-      (But can use.)  
+      (But it can work.)  
 
     + Toggle Group
 
@@ -84,31 +84,37 @@
     + Button
 
       It is base class of Button.  
-      (But can use.)  
+      (But it can work.)  
 
   + Container
 
     It is BoxModelGameObject but it has background.
+      + Need to complete description.
 
     + Container.Canvas
 
       Add Canvas UGUI.
+        + Need to complete description.
 
     + Container.Scroll
 
       List View.
+        + Need to complete description.
 
     + Container.GridContainer
 
       Container but use BoxGrid
+        + Need to complete description.
 
     + Container.FitterContainer
 
       Container but use BoxAutoSizeModelGameObject
+        + Need to complete description.
 
   + Block
 
     It is BoxElementGameObject but it has background.
+      + Need to complete description.
 
 ### Taiwu UI Kit
-Need to complete description.
++ Need to complete description.

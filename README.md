@@ -26,18 +26,29 @@
     Use LayoutElement.  
     Can auto resize itself by parm.  
 
+  + BoxSizeFitterGameObject
+
+    Use ContentSizeFitter.  
+    Can resize parent to adapt children.  
+
   + BoxGroupGameObject
 
     Use LayoutGroup.  
-    It only support Horizontal and Vertical.  
+    It support Horizontal and Vertical.  
     Can auto sort and resize children.  
-    Plan of this:  
 
-    + Add support of Grid.
+  + BoxGirdGameObject(Base BoxSizeFitterGameObject)
 
-  + BoxModelGameObject
+    Use GridLayoutGroup.  
+    But it can automatically set children's width to adapt parent.  
+
+  + BoxModelGameObject(Base BoxElementGameObject,BoxGroupGameObject)
 
     Have both BoxElementGameObject and BoxGroupGameObject function.  
+
+  + BoxAutoSizeModelGameObject(Base BoxSizeFitterGameObject,BoxGroupGameObject)
+
+    Have both BoxSizeFitterGameObject and BoxGroupGameObject function.  
 
 + Non-core
 
@@ -61,17 +72,39 @@
     DON NOT USE THIS!  
     It is base class of Toggle and Button.  
 
+    + Toggle
+
+      It is base class of Toggle.  
+      (But can use.)  
+
+    + Toggle Group
+
+      It is Container,but it can also set toggleGroup of toggle that in children.
+
+    + Button
+
+      It is base class of Button.  
+      (But can use.)  
+
   + Container
 
     It is BoxModelGameObject but it has background.
 
-  + Container.Canvas
+    + Container.Canvas
 
-    Add Canvas UGUI.
+      Add Canvas UGUI.
 
-  + Container.Scroll
+    + Container.Scroll
 
-    List View.
+      List View.
+
+    + Container.GridContainer
+
+      Container but use BoxGrid
+
+    + Container.FitterContainer
+
+      Container but use BoxAutoSizeModelGameObject
 
   + Block
 

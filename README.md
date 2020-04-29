@@ -37,16 +37,16 @@
     It support Horizontal and Vertical.  
     Can auto sort and resize children.  
 
-  + BoxGirdGameObject(Base BoxSizeFitterGameObject)
+  + BoxGirdGameObject(Base on BoxSizeFitterGameObject)
 
     Use GridLayoutGroup.  
     But it can automatically set children's width to adapt parent.  
 
-  + BoxModelGameObject(Base BoxElementGameObject,BoxGroupGameObject)
+  + BoxModelGameObject(Base on BoxElementGameObject,BoxGroupGameObject)
 
-    Have both BoxElementGameObject and BoxGroupGameObject function.  
+    Have both BoxElementGameObject on and BoxGroupGameObject function.  
 
-  + BoxAutoSizeModelGameObject(Base BoxSizeFitterGameObject,BoxGroupGameObject)
+  + BoxAutoSizeModelGameObject(Base on BoxSizeFitterGameObject,BoxGroupGameObject)
 
     Have both BoxSizeFitterGameObject and BoxGroupGameObject function.  
 

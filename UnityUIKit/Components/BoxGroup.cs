@@ -25,7 +25,6 @@ namespace UnityUIKit.Components
 {
     public class BoxGroup : ManagedComponent
     {
-        //Why to serialize this?
         private Direction Direction;
 
         public HorizontalOrVerticalLayoutGroup LayoutGroup {

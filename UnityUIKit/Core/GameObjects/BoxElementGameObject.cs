@@ -15,13 +15,15 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using UnityUIKit.Components;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core.GameObjects
 {
     public class BoxElementGameObject : ManagedGameObject
     {
-        // FIXME: Add SerializableField Tag
         public BoxElement.ComponentAttributes Element = new BoxElement.ComponentAttributes();
+
+        [YamlIgnore]
         public BoxElement BoxElement => Get<BoxElement>();
 
         public override void Create(bool active)

@@ -16,15 +16,18 @@
 
 using UnityUIKit.Components;
 using UnityEngine.UI;
+using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core.GameObjects
 {
     public class BoxGroupGameObject : ManagedGameObject
     {
-        // FIXME: Add SerializableField Tag
         public BoxGroup.ComponentAttributes Group = new BoxGroup.ComponentAttributes();
+
+        [YamlIgnore]
         public BoxGroup BoxGroup => Get<BoxGroup>();
 
+        [YamlIgnore]
         public HorizontalOrVerticalLayoutGroup LayoutGroup => BoxGroup.LayoutGroup;
 
         public override void Create(bool active)

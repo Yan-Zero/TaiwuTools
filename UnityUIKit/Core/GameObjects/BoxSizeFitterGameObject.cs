@@ -15,26 +15,23 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using UnityUIKit.Components;
-using UnityEngine.UI;
-using System;
 using YamlDotNet.Serialization;
 
 namespace UnityUIKit.Core.GameObjects
 {
-    [YamlOnlySerializeSerializable]
-    public class BoxModelGameObject : BoxElementGameObject
-    {
-        [YamlSerializable]
-        public BoxGroup.ComponentAttributes Group = new BoxGroup.ComponentAttributes();
-        public BoxGroup BoxGroup => Get<BoxGroup>();
 
-        public HorizontalOrVerticalLayoutGroup LayoutGroup => BoxGroup.LayoutGroup;
+    public class BoxSizeFitterGameObject : ManagedGameObject
+    {
+        public BoxSizeFitter.ComponentAttributes SizeFitter = new BoxSizeFitter.ComponentAttributes();
+
+        [YamlIgnore]
+        public BoxSizeFitter BoxSizeFitter => Get<BoxSizeFitter>();
 
         public override void Create(bool active)
         {
             base.Create(active);
 
-            BoxGroup.Apply(Group);
+            BoxSizeFitter.Apply(SizeFitter);
         }
     }
 }

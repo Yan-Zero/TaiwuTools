@@ -81,12 +81,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AutoGridLayoutGroup.cs" />
     <Compile Include="Components\BoxElement.cs" />
+    <Compile Include="Components\BoxGrid.cs" />
     <Compile Include="Components\BoxGroup.cs" />
+    <Compile Include="Components\BoxSizeFitter.cs" />
     <Compile Include="Components\TextControl.cs" />
     <Compile Include="Core\ComponentAttributes.cs" />
     <Compile Include="Core\Enums.cs" />
+    <Compile Include="Core\GameObjects\BoxAutoSizeModelGameObject.cs" />
+    <Compile Include="Core\GameObjects\BoxSizeFitterGameObject.cs" />
     <Compile Include="Core\GameObjects\BoxElementGameObject.cs" />
+    <Compile Include="Core\GameObjects\BoxGirdGameObject.cs" />
     <Compile Include="Core\GameObjects\BoxGroupGameObject.cs" />
     <Compile Include="Core\GameObjects\BoxModelGameObject.cs" />
     <Compile Include="Core\IManagedObject.cs" />
@@ -96,6 +102,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Compile Include="GameObjects\Block.cs" />
     <Compile Include="GameObjects\Button.cs" />
     <Compile Include="GameObjects\Container\CanvasContainer.cs" />
+    <Compile Include="GameObjects\Container\FitterContainer.cs" />
+    <Compile Include="GameObjects\Container\GridContainer.cs" />
     <Compile Include="GameObjects\Container\ScrollContainer.cs" />
     <Compile Include="GameObjects\Container.cs" />
     <Compile Include="GameObjects\Label.cs" />

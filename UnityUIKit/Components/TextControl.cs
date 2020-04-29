@@ -40,7 +40,6 @@ namespace UnityUIKit.Components
         }
 
 
-        [Serializable]
         public new class ComponentAttributes : ManagedComponent.ComponentAttributes
         {
             public Font Font = null;

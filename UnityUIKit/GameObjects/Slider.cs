@@ -27,6 +27,7 @@ namespace UnityUIKit.GameObjects
         protected float m_MaxValue = 100;
         protected float m_MinValue = 0;
         protected float m_NormalizedValue = 50;
+        protected float m_Value = 50;
         protected bool m_wholeNumber = false;
         protected bool m_interactable = true;
 
@@ -82,11 +83,12 @@ namespace UnityUIKit.GameObjects
         }
         public float Value
         {
-            get => UnitySlider?.value ?? 0;
+            get => m_Value;
             set 
             {
-                if (UnitySlider) UnitySlider.value = value;
-                else NormalizedValue = value;
+                m_Value = value;
+                if (UnitySlider) 
+                    UnitySlider.value = m_Value;
             }
         }
         [YamlSerializable]
@@ -121,6 +123,7 @@ namespace UnityUIKit.GameObjects
             Slider.maxValue = MaxValue;
             Slider.minValue = MinValue;
             Slider.normalizedValue = m_NormalizedValue;
+            Slider.value = m_Value;
             Slider.wholeNumbers = m_wholeNumber;
             Slider.interactable = m_interactable;
             Slider.onValueChanged.AddListener(onValueChanged);

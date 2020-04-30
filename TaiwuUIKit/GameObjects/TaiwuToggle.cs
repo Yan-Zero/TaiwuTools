@@ -7,23 +7,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityUIKit.Core;
 using UnityUIKit.Core.GameObjects;
+using UnityUIKit.GameObjects;
 
 namespace TaiwuUIKit.GameObjects
 {
     [YamlOnlySerializeSerializable]
-    public class TaiwuToggle : TaiwuToggleButton
+    public class TaiwuToggle : UnityUIKit.GameObjects.Toggle
     {
         // Load static background image
         private static readonly PointerEnter _pointerEnter;
         private static readonly PointerClick _pointerClick;
         private static readonly ColorBlock _colors;
-
         private static readonly Image _BackgroundImage;
 
         public override Image Res_Image => _BackgroundImage;
-        public override PointerEnter Res_PointerEnter => _pointerEnter;
-        public override PointerClick Res_PointerClick => _pointerClick;
-        public virtual ColorBlock Res_Colors => _colors;
+        public virtual PointerEnter Res_PointerEnter => _pointerEnter;
+        public virtual PointerClick Res_PointerClick => _pointerClick;
+        public override ColorBlock Res_Colors => _colors;
 
         static TaiwuToggle()
         {
@@ -42,26 +42,6 @@ namespace TaiwuUIKit.GameObjects
             };
         }
 
-        public Action<bool, TaiwuToggle> onValueChanged = delegate { };
-
-        [YamlSerializable]
-        public bool isOn
-        {
-            get
-            {
-                return m_isOn;
-            }
-            set
-            {
-                m_isOn = value;
-                if(Created)
-                    Get<Toggle>().isOn = m_isOn;
-            }
-        }
-        public bool m_isOn = false;
-
-        [YamlSerializable]
-        public List<float> PreferredSize = new List<float> { 50, 50 };
 
         private List<string> TipParm = new List<string>() { "", "" };
         [YamlSerializable]
@@ -85,6 +65,36 @@ namespace TaiwuUIKit.GameObjects
             }
         }
 
+        public override Label Label => m_Label;
+        private BaseText m_Label = new BaseText();
+
+        [YamlSerializable]
+        public bool UseBoldFont
+        {
+            get
+            {
+                return (Label as BaseText).UseBoldFont;
+            }
+            set
+            {
+                (Label as BaseText).UseBoldFont = value;
+            }
+        }
+
+        [YamlSerializable]
+        public bool UseOutline
+        {
+            get
+            {
+                return (Label as BaseText).UseOutline;
+            }
+            set
+            {
+                (Label as BaseText).UseOutline = value;
+            }
+        }
+
+
         public override void Create(bool active = true)
         {
             if(Element.PreferredSize.Count == 0)
@@ -96,42 +106,30 @@ namespace TaiwuUIKit.GameObjects
             if(!string.IsNullOrEmpty(TipTitle) || !string.IsNullOrEmpty(TipContant))
                 Get<MouseTipDisplayer>().param = TipParm.ToArray();
 
-            var Toggle = Get<Toggle>();
+            var Toggle = Get<UnityEngine.UI.Toggle>();
             Toggle.transition = Selectable.Transition.ColorTint;
             Toggle.colors = Res_Colors;
-            Toggle.isOn = m_isOn;
 
-            if (Res_Image != null)
+            BoxModelGameObject BackgroundContainer;
+            (BackgroundContainer = new BoxModelGameObject()
             {
-                BoxModelGameObject BackgroundContainer;
-                (BackgroundContainer = new BoxModelGameObject()
-                {
-                    Name = "Label"
-                }).SetParent(this);
+                Name = "Label"
+            }).SetParent(this);
 
-                var bgOn = BackgroundContainer.Get<Image>();
-                bgOn.type = Res_Image.type;
-                bgOn.sprite = Res_Image.sprite;
-                bgOn.color = new Color(156f / 255, 54f / 255, 54f / 255, 1);
+            var bgOn = BackgroundContainer.Get<Image>();
+            bgOn.type = Res_Image.type;
+            bgOn.sprite = Res_Image.sprite;
+            bgOn.color = new Color(156f / 255, 54f / 255, 54f / 255, 1);
 
-                BackgroundContainer.RectTransform.sizeDelta = Vector2.zero;
-                BackgroundContainer.RectTransform.anchorMin = Vector2.zero;
-                BackgroundContainer.RectTransform.anchorMax = Vector2.one;
-                BackgroundContainer.RectTransform.SetAsFirstSibling();
+            BackgroundContainer.RectTransform.sizeDelta = Vector2.zero;
+            BackgroundContainer.RectTransform.anchorMin = Vector2.zero;
+            BackgroundContainer.RectTransform.anchorMax = Vector2.one;
+            BackgroundContainer.RectTransform.SetAsFirstSibling();
 
-                BackgroundContainer.Get<UnityEngine.UI.LayoutElement>().ignoreLayout = true;
+            BackgroundContainer.Get<UnityEngine.UI.LayoutElement>().ignoreLayout = true;
+            Toggle.graphic = bgOn;
 
-                var bgOff = Get<Image>();
-                bgOff.type = Res_Image.type;
-                bgOff.sprite = Res_Image.sprite;
-                bgOff.color = new Color(50f / 255, 50f / 255, 50f / 255, 1);
-
-                Toggle.graphic = bgOn;
-                Toggle.image = bgOff;
-                Toggle.targetGraphic = bgOff;
-            }
-            
-            Toggle.onValueChanged.AddListener(onValueChanged_Invoke);
+            Get<Image>().color = new Color(50f / 255, 50f / 255, 50f / 255, 1);
 
             if (Res_PointerClick != null)
             {
@@ -139,11 +137,20 @@ namespace TaiwuUIKit.GameObjects
                 pc.playSE = Res_PointerClick.playSE;
                 pc.SEKey = Res_PointerClick.SEKey;
             }
-        }
-
-        private void onValueChanged_Invoke(bool isOn)
-        {
-            onValueChanged.Invoke(isOn, this);
+            if (Res_PointerEnter != null)
+            {
+                PointerEnter pointerEnter = Get<PointerEnter>();
+                pointerEnter.changeSize = Res_PointerEnter.changeSize;
+                pointerEnter.restSize = Res_PointerEnter.restSize;
+                pointerEnter.xMirror = Res_PointerEnter.xMirror;
+                pointerEnter.yMirror = Res_PointerEnter.yMirror;
+                pointerEnter.move = Res_PointerEnter.move;
+                pointerEnter.moveX = Res_PointerEnter.moveX;
+                pointerEnter.moveSize = Res_PointerEnter.moveSize;
+                pointerEnter.restMoveSize = Res_PointerEnter.restMoveSize;
+                pointerEnter.SEKey = Res_PointerEnter.SEKey;
+                pointerEnter.changeTarget = Res_PointerEnter.changeTarget;
+            }
         }
     }
 }

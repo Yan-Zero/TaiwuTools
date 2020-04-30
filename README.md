@@ -24,20 +24,33 @@
   + BoxElementGameObject
 
     Use LayoutElement.  
-    Can auto resize itself by parm.  
+    Can auto resize itself by parameters.  
+
+  + BoxSizeFitterGameObject
+
+    Use ContentSizeFitter.  
+    Can resize parent to fit children.  
 
   + BoxGroupGameObject
 
     Use LayoutGroup.  
-    It only support Horizontal and Vertical.  
+    It support Horizontal and Vertical.   
     Can auto sort and resize children.  
-    Plan of this:  
 
-    + Add support of Grid.
+  + BoxGirdGameObject
+
+    + Based on BoxSizeFitterGameObject
+
+    Use GridLayoutGroup.   
+    But it can automatically adapt children's width to parent.
 
   + BoxModelGameObject
 
-    Have both BoxElementGameObject and BoxGroupGameObject function.  
+    + Based on BoxElementGameObject and BoxGroupGameObject  
+
+  + BoxAutoSizeModelGameObject
+
+    + Based on BoxSizeFitterGameObject and BoxGroupGameObject
 
 + Non-core
 
@@ -59,23 +72,55 @@
   + Base Toggle Button
 
     DON NOT USE THIS!  
-    It is base class of Toggle and Button.  
+    A common base class for Toggle and Button.  
+
+    + Toggle
+
+      It is base class of Toggle.  
+      (But it can work.)  
+
+    + Toggle Group
+
+      Container, but just expect Toggles in it.  
+
+      All children (of course, they are Toggles) will bind to their parent.
+
+    + Button
+  
+    It is base class of Button.  
+      (But it can work.)  
 
   + Container
-
+  
     It is BoxModelGameObject but it has background.
+  
+  + Need to complete description.
+  
+      + Container.Canvas
+  
+        Add Canvas UGUI.
+        + Need to complete description.
+  
+      + Container.Scroll
 
-  + Container.Canvas
-
-    Add Canvas UGUI.
-
-  + Container.Scroll
-
-    List View.
-
+        List View.
+        + Need to complete description.
+  
+    + Container.GridContainer
+  
+      Container but use BoxGrid.
+  
+    + Container.FitterContainer
+  
+    Container but use BoxAutoSizeModelGameObject.
+  
+      + Need to complete description.
+  
   + Block
-
+  
     It is BoxElementGameObject but it has background.
+  
+      + Need to complete description.
 
 ### Taiwu UI Kit
-Need to complete description.
++ Need to complete description.

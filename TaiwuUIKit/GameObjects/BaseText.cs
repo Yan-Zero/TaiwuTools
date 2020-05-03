@@ -35,15 +35,6 @@ namespace TaiwuUIKit.GameObjects
         {
             base._Text.Font = UseBoldFont ? DateFile.instance.boldFont : DateFile.instance.font;
 
-#if DEBUG
-            ManagedGameObjectIO.debugLogger.Start($"BaseText.{Name}.Create");
-            ManagedGameObjectIO.debugLogger.WriteLine($"UseBoldFont : {UseBoldFont}");
-            ManagedGameObjectIO.debugLogger.WriteLine($"_Text.Font : {_Text.Font.name}");
-            ManagedGameObjectIO.debugLogger.WriteLine($"DateFile.instance.boldFont : {DateFile.instance.boldFont.name}");
-            ManagedGameObjectIO.debugLogger.WriteLine($"DateFile.instance.font : {DateFile.instance.font.name}");
-            ManagedGameObjectIO.debugLogger.End();
-#endif
-
             base._Text.Alignment = (new Dictionary<HorizontalAnchor, TextAnchor>() {
                 { HorizontalAnchor.Left, TextAnchor.MiddleLeft },
                 { HorizontalAnchor.Center, TextAnchor.MiddleCenter},

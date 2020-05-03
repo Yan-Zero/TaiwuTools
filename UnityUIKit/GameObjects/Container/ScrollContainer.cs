@@ -52,12 +52,7 @@ namespace UnityUIKit.GameObjects
 
                 // FIXME - orphan on destroy
                 var viewport = new Viewport() {
-                    Name = $"{Name}:Viewport",
-                    Group =
-                    {
-                        ForceExpandChildWidth = true,
-                        ForceExpandChildHeight = true
-                    }
+                    Name = $"{Name}:Viewport"
                 };
 
 
@@ -79,8 +74,14 @@ namespace UnityUIKit.GameObjects
                 content.SetParent(viewport);
                 viewport.SetParent(this);
 
+                content.RectTransform.anchorMin = Vector2.zero;
+                content.RectTransform.anchorMax = Vector2.one;
+                content.RectTransform.sizeDelta = Vector2.zero;
+
                 ScrollRect.viewport = viewport.RectTransform;
                 ScrollRect.content = content.RectTransform;
+
+                ScrollRect.scrollSensitivity = 30;
             }
 
 
@@ -88,7 +89,7 @@ namespace UnityUIKit.GameObjects
             public void Add(string key, ManagedGameObject gameObject) => (ContentChildren[key] = gameObject).SetParent(content);
 
 
-            protected class Viewport : Container
+            protected class Viewport : BoxElementGameObject
             {
                 public Mask Mask => Get<Mask>();
 

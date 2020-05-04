@@ -56,11 +56,6 @@ namespace TaiwuUIKit.GameObjects
 
         public override void Create(bool active)
         {
-#if DEBUG
-            ManagedGameObjectIO.debugLogger.Start($"TaiwuLabel.{Name}.Create");
-            ManagedGameObjectIO.debugLogger.WriteLine($"_Text.UseBoldFont : {_Text.UseBoldFont}");
-            ManagedGameObjectIO.debugLogger.End();
-#endif
 
             base.Create(active);
 

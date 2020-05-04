@@ -113,7 +113,7 @@ namespace UnityUIKit.GameObjects
         private string m_Text;
         public string Text
         {
-            get => m_Text;
+            get => UnityInputField?.text ?? m_Text;
             set
             {
                 m_Text = value;
@@ -132,16 +132,25 @@ namespace UnityUIKit.GameObjects
                     UnityInputField.characterLimit = m_CharacterLimit;
             }
         }
+        private bool m_ReadOnly;
+        public bool ReadOnly
+        {
+            get => m_ReadOnly;
+            set
+            {
+                m_ReadOnly = value;
+                if (UnityInputField)
+                    UnityInputField.readOnly = m_ReadOnly;
+            }
+        }
 
 
         public Action<string,InputField> OnEndEdit;
         public Action<string,InputField> OnValueChanged;
-        //public Func<string, int, char, InputField, char> OnValidateInput;
 
 
         public override void Create(bool active)
         {
-            //Core.GameObjects.BoxElementGameObject boxElementGameObject;
 
             m_Placeholder._Text.Font = Font;
             Children.Add(m_Placeholder);
@@ -168,7 +177,7 @@ namespace UnityUIKit.GameObjects
             UnityInputField.text = m_Text;
             UnityInputField.onEndEdit.AddListener(onEndEdit);
             UnityInputField.onValueChanged.AddListener(onValueChanged);
-            //UnityInputField.onValidateInput = onValidateInput;
+            UnityInputField.readOnly = m_ReadOnly;
             UnityInputField.characterLimit = CharacterLimit;
 
             m_Placeholder.RectTransform.sizeDelta = Vector2.zero;
@@ -189,14 +198,6 @@ namespace UnityUIKit.GameObjects
         {
             OnValueChanged?.Invoke(value, this);
         } 
-        //private char onValidateInput(string text, int charIndex, char addedChar)
-        //{
-        //    char result = addedChar;
-        //    if (OnValidateInput != null)
-        //    {
-        //        result = OnValidateInput.Invoke(text, charIndex, addedChar, this);
-        //    }
-        //    return addedChar;
-        //}
+
     }
 }

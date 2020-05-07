@@ -153,13 +153,13 @@ namespace UnityUIKit.GameObjects
         {
 
             m_Placeholder._Text.Font = Font;
-            Children.Add(m_Placeholder);
             _Text._Text.Font = Font;
-            Children.Add(_Text);
-
+            
             base.Create(active);
+            m_Placeholder.SetParent(this);
+            _Text.SetParent(this);
 
-            if(Res_BackgroundImage)
+            if (Res_BackgroundImage)
             {
                 var bg = Get<Image>();
                 bg.type = Res_BackgroundImage.type;

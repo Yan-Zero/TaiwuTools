@@ -113,6 +113,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)..\bin\Debug" "$(ProjectDir)..\..\Taiwu Editor\lib" /Y</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)..\bin\Release\*.dll" "$(ProjectDir)..\..\Taiwu Editor\lib" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>

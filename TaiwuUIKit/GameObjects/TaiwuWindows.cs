@@ -14,7 +14,7 @@ namespace TaiwuUIKit.GameObjects
     [YamlOnlySerializeSerializable]
     public class TaiwuWindows : BaseFrame
     {
-        private TaiwuTitle title;
+        public TaiwuTitle TaiwuTitle;
         private string titleText = "";
 
         public CloseButton CloseButton;
@@ -30,33 +30,34 @@ namespace TaiwuUIKit.GameObjects
             {
                 titleText = value;
                 
-                if (title != null)
+                if (TaiwuTitle != null)
                 {
-                    title.Text = titleText;
+                    TaiwuTitle.Text = titleText;
 
                     if (string.IsNullOrEmpty(value))
-                        title.SetActive(false);
+                        TaiwuTitle.SetActive(false);
                     else
-                        title.SetActive(true);
+                        TaiwuTitle.SetActive(true);
                 }
             }
         }
 
         public override void Create(bool active)
         {
-            title = new TaiwuTitle
+            TaiwuTitle = new TaiwuTitle
             {
                 Name = "Title",
                 Text = titleText
             };
-            Children.Insert(0, title);
             CloseButton = new CloseButton()
             {
                 Name = "Close",
             };
-            Children.Add(CloseButton);
 
             base.Create(active);
+            TaiwuTitle.SetParent(this);
+            TaiwuTitle.RectTransform.SetAsFirstSibling();
+            CloseButton.SetParent(this);
 
             CloseButton.OnClick = delegate 
             {

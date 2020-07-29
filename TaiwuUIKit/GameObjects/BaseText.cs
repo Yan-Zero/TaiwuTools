@@ -26,7 +26,14 @@ namespace TaiwuUIKit.GameObjects
     public class BaseText : Label
     {
 
-        public HorizontalAnchor Alignment = HorizontalAnchor.Center;
+        public TextAnchor Alignment
+        {
+            get => _Text.Alignment;
+            set
+            {
+                _Text.Alignment = value;
+            }
+        }
         public bool UseBoldFont = false;
         public bool UseOutline = true;
         public Color OutlineColor = new Color(0, 0, 0, 1);
@@ -34,12 +41,6 @@ namespace TaiwuUIKit.GameObjects
         public override void Create(bool active)
         {
             base._Text.Font = UseBoldFont ? DateFile.instance.boldFont : DateFile.instance.font;
-
-            base._Text.Alignment = (new Dictionary<HorizontalAnchor, TextAnchor>() {
-                { HorizontalAnchor.Left, TextAnchor.MiddleLeft },
-                { HorizontalAnchor.Center, TextAnchor.MiddleCenter},
-                { HorizontalAnchor.Right, TextAnchor.MiddleRight },
-            })[Alignment];
 
 
             base.Create(active);

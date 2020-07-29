@@ -33,7 +33,7 @@ namespace TaiwuUIKit.GameObjects
         [YamlIgnore]
         public BaseText _Text = new BaseText();
 
-        public HorizontalAnchor Alignment
+        public TextAnchor Alignment
         {
             get => _Text.Alignment;
             set => _Text.Alignment = value;

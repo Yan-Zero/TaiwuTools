@@ -15,7 +15,7 @@ namespace UnityUIKit.GameObjects
 			base.Create(active);
 			foreach (ManagedGameObject child in Children)
 			{
-				if (child is UnityUIKit.GameObjects.Toggle)
+				if (child is Toggle)
 					child.Get<UnityEngine.UI.Toggle>().group = Get<UnityEngine.UI.ToggleGroup>();
 			}
 		}

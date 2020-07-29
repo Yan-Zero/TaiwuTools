@@ -8,6 +8,9 @@ using UnityUIKit.Core;
 
 namespace UnityUIKit.GameObjects
 {
+	/// <summary>
+	/// 开关
+	/// </summary>
 	[YamlOnlySerializeSerializable]
 	public class Toggle : BaseTogleButton
 	{
@@ -25,12 +28,15 @@ namespace UnityUIKit.GameObjects
 			set
 			{
 				m_isOn = value;
-				if (base.Created)
+				if (Created)
 					Get<UnityEngine.UI.Toggle>().isOn = m_isOn;
 			}
 		}
 		private bool m_isOn = false;
 
+		/// <summary>
+		/// 预设大小
+		/// </summary>
 		[YamlSerializable]
 		public List<float> PreferredSize = new List<float> { 0, 50 };
 

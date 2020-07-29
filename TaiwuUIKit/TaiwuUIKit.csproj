@@ -41,6 +41,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Debug\TaiwuUIKit.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,6 +50,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Release\TaiwuUIKit.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -89,6 +91,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\CloseButton.cs" />
+    <Compile Include="GameObjects\TaiwuActorFace.cs" />
     <Compile Include="GameObjects\TaiwuInputField.cs" />
     <Compile Include="GameObjects\TaiwuLabel.cs" />
     <Compile Include="GameObjects\TaiwuSlider.cs" />

@@ -10,7 +10,7 @@ namespace UnityUIKit.GameObjects
 {
 	public class Button : BaseTogleButton
 	{
-		public Action<UnityUIKit.GameObjects.Button> OnClick;
+		public Action<Button> OnClick;
 
 		private void OnClick_Invoke()
 		{

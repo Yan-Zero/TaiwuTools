@@ -99,11 +99,16 @@ namespace TaiwuUIKit.GameObjects
         {
             if(Element.PreferredSize.Count == 0)
                 Element.PreferredSize = PreferredSize;
-            Label._Text.Color = Color.white;
 
             base.Create(active);
+            UnityEngine.Object.Destroy(Label.Get<ContentSizeFitter>());
+            Label.Get<LayoutElement>().ignoreLayout = true;
+            Label.RectTransform.sizeDelta = Vector2.zero;
+            Label.RectTransform.anchoredPosition = Vector2.zero;
+            Label.RectTransform.anchorMin = Vector2.zero;
+            Label.RectTransform.anchorMax = Vector2.one;
 
-            if(!string.IsNullOrEmpty(TipTitle) || !string.IsNullOrEmpty(TipContant))
+            if (!string.IsNullOrEmpty(TipTitle) || !string.IsNullOrEmpty(TipContant))
                 Get<MouseTipDisplayer>().param = TipParm.ToArray();
 
             var Toggle = Get<UnityEngine.UI.Toggle>();
@@ -126,7 +131,7 @@ namespace TaiwuUIKit.GameObjects
             BackgroundContainer.RectTransform.anchorMax = Vector2.one;
             BackgroundContainer.RectTransform.SetAsFirstSibling();
 
-            BackgroundContainer.Get<UnityEngine.UI.LayoutElement>().ignoreLayout = true;
+            BackgroundContainer.Get<LayoutElement>().ignoreLayout = true;
             Toggle.graphic = bgOn;
 
             Get<Image>().color = new Color(50f / 255, 50f / 255, 50f / 255, 1);

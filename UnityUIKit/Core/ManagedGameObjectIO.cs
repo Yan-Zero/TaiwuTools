@@ -347,7 +347,7 @@ namespace UnityUIKit.Core
 			return m_Deserializer.Deserialize<T>(input);
 		}
 
-        public static string Save(ManagedGameObject input)
+        public static string Save(object input)
         {
 #if DEBUG
 			debugLogger.Start("Save");

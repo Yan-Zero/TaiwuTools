@@ -11,6 +11,9 @@ using UnityUIKit.GameObjects;
 
 namespace TaiwuUIKit.GameObjects
 {
+    /// <summary>
+    /// 太吾标准风格的 Toggle
+    /// </summary>
     [YamlOnlySerializeSerializable]
     public class TaiwuToggle : UnityUIKit.GameObjects.Toggle
     {
@@ -44,6 +47,9 @@ namespace TaiwuUIKit.GameObjects
 
 
         private List<string> TipParm = new List<string>() { "", "" };
+        /// <summary>
+        /// Tip 的标题
+        /// </summary>
         [YamlSerializable]
         public string TipTitle
         {
@@ -54,6 +60,9 @@ namespace TaiwuUIKit.GameObjects
                 if (Created) Get<MouseTipDisplayer>().param = TipParm.ToArray();
             }
         }
+        /// <summary>
+        /// Tip 的 内容
+        /// </summary>
         [YamlSerializable]
         public string TipContant
         {
@@ -65,9 +74,15 @@ namespace TaiwuUIKit.GameObjects
             }
         }
 
+        /// <summary>
+        /// 文本表情（实际上是 BaseText 类型的）
+        /// </summary>
         public override Label Label => m_Label;
         private BaseText m_Label = new BaseText();
 
+        /// <summary>
+        /// 使用粗体
+        /// </summary>
         [YamlSerializable]
         public bool UseBoldFont
         {
@@ -81,6 +96,9 @@ namespace TaiwuUIKit.GameObjects
             }
         }
 
+        /// <summary>
+        /// 使用 OutLine
+        /// </summary>
         [YamlSerializable]
         public bool UseOutline
         {
@@ -94,7 +112,18 @@ namespace TaiwuUIKit.GameObjects
             }
         }
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        public TaiwuToggle()
+        {
+            FontColor = Color.white;
+        }
 
+        /// <summary>
+        /// 创建组件
+        /// </summary>
+        /// <param name="active"></param>
         public override void Create(bool active = true)
         {
             if(Element.PreferredSize.Count == 0)

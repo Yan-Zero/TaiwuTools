@@ -61,10 +61,25 @@ namespace TaiwuUIKit.GameObjects
             }
         }
         /// <summary>
+        /// Tip 的 内容，已废弃
+        /// 为了二进制兼容保留原接口
+        /// </summary>
+        [Obsolete("请使用 TipContent 来代替 TipContant", false)]
+        public string TipContant
+        {
+            get => TipParm[1];
+            set
+            {
+                TipParm[1] = value;
+                if (Created) Get<MouseTipDisplayer>().param = TipParm.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Tip 的 内容
         /// </summary>
         [YamlSerializable]
-        public string TipContant
+        public string TipContent
         {
             get => TipParm[1];
             set

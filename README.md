@@ -1,3 +1,7 @@
+# Sponsorship
+## WeChat
+![avatar](https://www.hualigs.cn/image/600aa12470350.jpg) 
+
 # TaiwuTools
 
 <p align="center">

@@ -1,3 +1,7 @@
+# 赞助码
+## 微信
+![avatar](https://www.hualigs.cn/image/600aa12470350.jpg) 
+
 # 太吾绘卷工具包
 
 <p align="center">
